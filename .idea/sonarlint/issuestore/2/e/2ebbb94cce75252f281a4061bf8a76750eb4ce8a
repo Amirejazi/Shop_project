@@ -1,0 +1,42 @@
+
+vpython:S1192Ò
+"]Define a constant instead of duplicating this literal "admin/%s/popup_response.html" 3 times.(¡ÒĞĞ
+epython:S1192ñ"LDefine a constant instead of duplicating this literal "admin:index" 3 times.(¢ˆ‡°
+ppython:S1192	"WDefine a constant instead of duplicating this literal "admin:%s_%s_changelist" 3 times.(¿Ê®ğ
+spython:S1192Ó
+"ZDefine a constant instead of duplicating this literal "admin/popup_response.html" 3 times.(Â¼Ÿ
+~python:S1192Ğ
+"`Define a constant instead of duplicating this literal "admin/%s/%s/popup_response.html" 3 times.(ñ£óÄşÿÿÿÿ
+Mpython:S1066Ã"/Merge this if statement with the enclosing one.(â©¼—ÿÿÿÿÿ
+lpython:S3776•"TRefactor this function to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÍÖT
+Mpython:S1172Ù"/Remove the unused function parameter "request".(ÀØ“üøÿÿÿÿ
+Mpython:S1172É"/Remove the unused function parameter "request".(Ûöè£ÿÿÿÿÿ
+Ipython:S1172ê"+Remove the unused function parameter "obj".(Ÿ×éŞøÿÿÿÿ
+Mpython:S1172ê"/Remove the unused function parameter "request".(Ÿ×éŞøÿÿÿÿ
+Mpython:S1172‚"/Remove the unused function parameter "request".(œ¤Äøÿÿÿÿ
+Ipython:S1172‚"+Remove the unused function parameter "obj".(œ¤Äøÿÿÿÿ
+Hpython:S1172†"/Remove the unused function parameter "request".(ŞÙ³è
+Mpython:S1172Œ"/Remove the unused function parameter "request".(´Î«Áıÿÿÿÿ
+Ipython:S1172Œ"+Remove the unused function parameter "obj".(´Î«Áıÿÿÿÿ
+Dpython:S1172’"+Remove the unused function parameter "obj".(¾Ÿƒ¤
+Hpython:S1172’"/Remove the unused function parameter "request".(¾Ÿƒ¤
+Mpython:S1135"4Complete the task associated to this "TODO" comment.(ÚÈñù
+rpython:S3776¬"TRefactor this function to reduce its Cognitive Complexity from 21 to the 15 allowed.(î¼‘ÿÿÿÿÿ
+Hpython:S1172è"/Remove the unused function parameter "request".(¢™öÁ
+Dpython:S1172¡"+Remove the unused function parameter "obj".(şÿ®
+Dpython:S1172°"+Remove the unused function parameter "obj".(û•“©
+Ipython:S1172¿"+Remove the unused function parameter "obj".(áÂÈùÿÿÿÿ
+xpython:S117Á"[Rename this local variable "ChangeList" to match the regular expression ^[_a-z][a-z0-9_]*$.(²ã‘¬ûÿÿÿÿ
+Dpython:S5806ä"+Rename this variable; it shadows a builtin.(Ó£°±
+mpython:S3776Î"TRefactor this function to reduce its Cognitive Complexity from 30 to the 15 allowed.(åŒÃª
+rpython:S3776¨
+"TRefactor this function to reduce its Cognitive Complexity from 16 to the 15 allowed.(èÎ’öúÿÿÿÿ
+rpython:S117ú"ZRename this local variable "ModelForm" to match the regular expression ^[_a-z][a-z0-9_]*$.(é¹ùÄ
+wpython:S117¨"ZRename this local variable "adminForm" to match the regular expression ^[_a-z][a-z0-9_]*$.( ¸«ğûÿÿÿÿ
+rpython:S3776Ø"TRefactor this function to reduce its Cognitive Complexity from 49 to the 15 allowed.(»íŞóøÿÿÿÿ
+upython:S117Û"XRename this local variable "FormSet" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ë–Ïıÿÿÿÿ
+mpython:S3776ÿ"TRefactor this function to reduce its Cognitive Complexity from 46 to the 15 allowed.(Ñš—
+ppython:S117Ö"XRename this local variable "FormSet" to match the regular expression ^[_a-z][a-z0-9_]*$.(í‘¯
+mpython:S3776Î"TRefactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed.(ÿÃ¼Œ
+mpython:S3776­"TRefactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.(é¿Â
+Gpython:S2638¨".Remove parameter obj or provide default value.(â¨»

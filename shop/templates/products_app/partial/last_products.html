@@ -1,0 +1,34 @@
+<div class="block block-products-carousel" data-layout="grid-5">
+    <div class="container">
+        <div class="block-header">
+            <h3 class="block-header__title">محصولات جدید </h3>
+            <div class="block-header__divider"></div>
+            <ul class="block-header__groups-list">
+                <li>
+                    <button type="button"
+                            class="block-header__group block-header__group--active">همه</button>
+                </li>
+                {% for group in product_groups%}
+                    <li>
+                        <button type="button" class="block-header__group">{{ group.group_title }}</button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="block-header__arrows-list">
+                <button class="block-header__arrow block-header__arrow--left" type="button">
+                    <i class="fas fa-angle-right"></i>
+                </button>
+                <button class="block-header__arrow block-header__arrow--right" type="button">
+                    <i class="fas fa-angle-left"></i>
+                </button>
+            </div>
+        </div>
+        <div class="block-products-carousel__slider">
+            <div class="product-flexbox">
+                {% for product in products %}
+                    {% include "partial/products/product_box.html" with type=2 %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

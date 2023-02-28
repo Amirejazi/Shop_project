@@ -1,0 +1,16 @@
+LICENCE
+README.md
+setup.cfg
+setup.py
+ippanel/__init__.py
+ippanel/client.py
+ippanel/errors.py
+ippanel/httpclient.py
+ippanel/models.py
+ippanel.egg-info/PKG-INFO
+ippanel.egg-info/SOURCES.txt
+ippanel.egg-info/dependency_links.txt
+ippanel.egg-info/requires.txt
+ippanel.egg-info/top_level.txt
+tests/__init__.py
+tests/test_message.py
