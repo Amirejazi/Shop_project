@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<ul class="filter-categories__list">
+
+    {% for product_group in product_groups %}
+        <li class="filter-categories__item filter-categories__item--parent">
+            <a href="{% url 'products:products_of_group' slug=product_group.slug %}">{{ product_group.group_title }}</a>
+            <div class="filter-categories__counter">{{ product_group.products_of_group.all | length }}</div>
+        </li>
+    {% endfor %}
+</ul>
