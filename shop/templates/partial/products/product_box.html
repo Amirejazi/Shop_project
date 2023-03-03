@@ -19,7 +19,7 @@
             <div class="product-card__buttons">
 
                 <button class="btn btn-primary product-card__addtocart"
-                        type="button">
+                        type="button" onclick="add_to_shop_cart({{ product.id }},1)">
                     افزودن به سبد
                 </button>
                 <button
@@ -61,7 +61,7 @@
         <div class="product-card__buttons">
 
             <button class="btn btn-primary product-card__addtocart"
-                    type="button">
+                    type="button" onclick="add_to_shop_cart({{ product.id }},1)">
                 افزودن به سبد
             </button>
             <button
@@ -99,8 +99,8 @@
                 <div class="product-card__availability">موجودی: <span class="text-success">موجود در انبار</span></div>
                 <div class="product-card__prices">{{ product.price | intcomma }}</div>
                 <div class="product-card__buttons">
-                    <button class="btn btn-primary product-card__addtocart" type="button">افزودن به سبد</button>
-                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button">افزودن به سبد</button>
+                    <button class="btn btn-primary product-card__addtocart" type="button" onclick="add_to_shop_cart({{ product.id }},1)">افزودن به سبد</button>
+                    <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" onclick="add_to_shop_cart({{ product.id }},1)">افزودن به سبد</button>
                     <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
                         <svg width="16px" height="16px">
                             <use xlink:href="images/sprite.svg#wishlist-16"></use>

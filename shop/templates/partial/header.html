@@ -1,53 +1,236 @@
-<header class="site__header d-lg-block d-none">
-  <div class="site-header">
-    <!-- .topbar -->
-    <div class="site-header__topbar topbar">
-      <div class="topbar__container container">
-        <div class="topbar__row">
-          <div class="topbar__item topbar__item--link"><a class="topbar-link"
-              href="about-us.html">درباره ما</a></div>
-          <div class="topbar__item topbar__item--link"><a class="topbar-link"
-              href="contact-us.html">تماس با ما</a></div>
-          <div class="topbar__spring"></div>
-          <div class="topbar__item">
-            <div class="topbar-dropdown">
-              {% if user.is_authenticated %}
-                    <button class="topbar-dropdown__btn" type="button">
-                      <a href="UserPanel/user-dashboard.html" class="topbar-link">پنل کاربری</a>
-                      <i class="fa fa-user"></i>
-                    </button>
-              {% endif %}
-            </div>
-          </div>
+<!-- mobilemenu -->
+	<div class="mobilemenu">
+		<div class="mobilemenu__backdrop"></div>
+		<div class="mobilemenu__body">
+			<div class="mobilemenu__header">
+				<div class="mobilemenu__title">منو</div>
+				<button type="button" class="mobilemenu__close">
+					<i class="fa fa-bars"></i>
+				</button>
+			</div>
+			<div class="mobilemenu__content">
+				<ul class="mobile-links mobile-links--level--0" data-collapse
+					data-collapse-opened-class="mobile-links__item--open">
+					<li class="mobile-links__item" data-collapse-item>
+						<div class="mobile-links__item-title"><a href="{% url 'main:index' %}"
+								class="mobile-links__item-link">خانه</a>
+							<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+								<i class="fa fa-home"></i>
+							</button>
+						</div>
+					</li>
+					<li class="mobile-links__item" data-collapse-item>
+						<div class="mobile-links__item-title"><a href="" class="mobile-links__item-link">دسته ها</a>
+							<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+								<i class="fa fa-list"></i>
+							</button>
+						</div>
+						<div class="mobile-links__item-sub-links" data-collapse-content>
+							<ul class="mobile-links mobile-links--level--1">
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href=""
+											class="mobile-links__item-link">کالای دیجیتال</a>
+										<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+											<i class="fa fa-angle-double-down"></i>
+										</button>
+									</div>
+									<div class="mobile-links__item-sub-links" data-collapse-content>
+										<ul class="mobile-links mobile-links--level--2">
+											<li class="mobile-links__item" data-collapse-item>
+												<div class="mobile-links__item-title"><a href=""
+														class="mobile-links__item-link">موبایل</a></div>
+											</li>
+											<li class="mobile-links__item" data-collapse-item>
+												<div class="mobile-links__item-title"><a href=""
+														class="mobile-links__item-link">لپ تاپ</a></div>
+											</li>
+											<li class="mobile-links__item" data-collapse-item>
+												<div class="mobile-links__item-title"><a href=""
+														class="mobile-links__item-link">دوربین</a></div>
+											</li>
+											<li class="mobile-links__item" data-collapse-item>
+												<div class="mobile-links__item-title"><a href=""
+														class="mobile-links__item-link">سخت افزار</a></div>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title">
+										<a href=""	class="mobile-links__item-link">مد و پوشاک</a>
+										<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+											<i class="fa fa-angle-double-down"></i>
+										</button>
+									</div>
+									<div class="mobile-links__item-sub-links" data-collapse-content>
+										<ul class="mobile-links mobile-links--level--2">
+											<li class="mobile-links__item" data-collapse-item>
+												<div class="mobile-links__item-title">
+													<a href=""class="mobile-links__item-link">پوشاک مردانه</a>
+												</div>
+											</li>
+											<li class="mobile-links__item" data-collapse-item>
+												<div class="mobile-links__item-title">
+													<a href=""	class="mobile-links__item-link">پوشاک زنانه</a>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</li>
 
-        </div>
-      </div>
-    </div>
+					<li class="mobile-links__item" data-collapse-item>
+						<div class="mobile-links__item-title"><a href="#" class="mobile-links__item-link">حساب
+								کاربری</a>
+							<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+								<i class="fa fa-user"></i>
+							</button>
+						</div>
+						<div class="mobile-links__item-sub-links" data-collapse-content>
+							<ul class="mobile-links mobile-links--level--1">
+                                {% if user.is_authenticated %}
+                                    <li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title">
+										<a href="{% url 'accounts:logout' %}" class="mobile-links__item-link">خروج</a>
+									</div>
+								    </li>
+                                {% else %}
+                                    <li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title">
+										<a href="{% url 'accounts:login' %}" class="mobile-links__item-link">ورود</a>
+									</div>
+								    </li>
+								    <li class="mobile-links__item" data-collapse-item>
+								    	<div class="mobile-links__item-title">
+								    		<a href="{% url 'accounts:register' %}"	class="mobile-links__item-link">ثبت نام</a>
+								    	</div>
+								    </li>
+                                {% endif %}
 
-    <div class="site-header__middle container">
-      <div class="site-header__logo">
-        <a href="index.html">
-          <img src="" alt="">
-        </a>
-      </div>
-      <div class="site-header__search">
-        <div class="search">
-          <form class="search__form" action="">
-            <input class="search__input" name="search" placeholder="جستجو از میان 10,000 محصول"
-              aria-label="Site search" type="text" autocomplete="off">
-            <button class="search__button" type="submit">
-              <i class="fa fa-search"></i>
-            </button>
-            <div class="search__border"></div>
-          </form>
-        </div>
-      </div>
-      <div class="site-header__phone">
-        <div class="site-header__phone-title">پشتیبانی</div>
-        <div class="site-header__phone-number"><span class="ltr_text">081-45231</span></div>
-      </div>
-    </div>
-    <!-- .topbar / end -->
-      {% include "partial/navbar.html" %}
-  </div>
-</header>
+							</ul>
+						</div>
+					</li>
+					<li class="mobile-links__item" data-collapse-item>
+						<div class="mobile-links__item-title"><a href="index.html"
+								class="mobile-links__item-link">بلاگ</a>
+							<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+								<i class="fa fa-newspaper"></i>
+							</button>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- mobilemenu / end -->
+	<!-- site -->
+	<div class="site">
+		<!-- mobile site__header -->
+		<header class="site__header d-lg-none">
+			<div class="mobile-header mobile-header--sticky mobile-header--stuck">
+				<div class="mobile-header__panel">
+					<div class="container">
+						<div class="mobile-header__body">
+							<button class="mobile-header__menu-button">
+								<i class="fa fa-bars "></i>
+							</button>
+							<a class="mobile-header__logo" href="{% url 'main:index' %}">
+								<img src="{{ media_url }}images/logo_yuhoolshop_white.png" style="width: 110px; height: 55px;padding-right: 20px;" alt="">
+							</a>
+							<div class="mobile-header__search">
+								<form class="mobile-header__search-form" action="">
+									<input class="mobile-header__search-input" name="search"
+										placeholder="جستجو از میان 10,000 محصول" aria-label="Site search" type="text"
+										autocomplete="off">
+									<button class="mobile-header__search-button mobile-header__search-button--submit"
+										type="submit">
+										<i class="fa fa-search"></i>
+									</button>
+									<button class="mobile-header__search-button mobile-header__search-button--close"
+										type="button">
+										<i class="fa fa-times"></i>
+									</button>
+									<div class="mobile-header__search-body"></div>
+								</form>
+							</div>
+							<div class="mobile-header__indicators">
+								<div class="indicator indicator--mobile-search indicator--mobile d-sm-none">
+									<button class="indicator__button"><span class="indicator__area">
+										<i class="fa fa-search"></i>
+										</span></button>
+								</div>
+								<div class="indicator indicator--mobile d-sm-flex d-none"><a href="wishlist.html"
+										class="indicator__button"><span class="indicator__area">
+											<i class="fa fa-heart"></i>
+											<span class="indicator__value">0</span></span></a></div>
+								<div class="indicator indicator--mobile"><a href="{% url 'orders:shop_cart'%}"
+										class="indicator__button"><span class="indicator__area">
+											<i class="fa fa-shopping-cart"></i>
+											<span class="indicator__value" id="indicator__value_mobile">0</span></span></a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- mobile site__header / end -->
+
+		<!-- desktop site__header -->
+		<header class="site__header d-lg-block d-none">
+			<div class="site-header">
+
+				<!-- .topbar -->
+				<div class="site-header__topbar topbar">
+					<div class="topbar__container container">
+						<div class="topbar__row">
+							<div class="topbar__item topbar__item--link"><a class="topbar-link"
+									href="about-us.html">درباره ما</a></div>
+							<div class="topbar__item topbar__item--link"><a class="topbar-link"
+									href="contact-us.html">تماس با ما</a></div>
+							<div class="topbar__spring"></div>
+							<div class="topbar__item">
+								<div class="topbar-dropdown">
+									{% if user.is_authenticated %}
+                                        <button class="topbar-dropdown__btn" type="button">
+                                          <a href="UserPanel/user-dashboard.html" class="topbar-link">پنل کاربری</a>
+                                          <i class="fa fa-user"></i>
+                                        </button>
+                                    {% endif %}
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="site-header__middle container">
+					<div class="site-header__logo">
+						<a href="{% url 'main:index' %}">
+							<img src="{{ media_url }}images/logo_yuhoolshop.png" style="width: 160px; height: 80px;" alt="">
+						</a>
+					</div>
+					<div class="site-header__search">
+						<div class="search">
+							<form class="search__form" action="">
+								<input class="search__input" name="search" placeholder="جستجو از میان 10,000 محصول"
+									aria-label="Site search" type="text" autocomplete="off">
+								<button class="search__button" type="submit">
+									<i class="fa fa-search"></i>
+								</button>
+								<div class="search__border"></div>
+							</form>
+						</div>
+					</div>
+					<div class="site-header__phone">
+						<div class="site-header__phone-title">پشتیبانی</div>
+						<div class="site-header__phone-number"><span class="ltr_text">081-45231</span></div>
+					</div>
+				</div>
+				<!-- .topbar / end -->
+				{% include "partial/navbar.html" %}
+			</div>
+		</header>
+		<!-- desktop site__header / end -->

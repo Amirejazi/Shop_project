@@ -3510,7 +3510,7 @@ screen and (-ms-high-contrast:active) {
 	color: inherit;
 	fill: currentColor;
 	margin-left: 16px;
-	margin-right: 12px
+	margin-right: 72px;
 }
 .mobile-header__logo:hover {
 	color: inherit

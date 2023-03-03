@@ -216,12 +216,12 @@
                                     <div class="product__actions-item">
                                         <div class="input-number product__quantity">
                                             <input id="product-quantity" class="input-number__input form-control form-control-lg" type="number" min="1" value="1">
-                                            <div class="input-number__add"></div>
-                                            <div class="input-number__sub"></div>
+                                            <div class="input-number__add" onclick="add_to_input_number('product-quantity')"></div>
+                                            <div class="input-number__sub" onclick="sub_to_input_number('product-quantity')"></div>
                                         </div>
                                     </div>
                                     <div class="product__actions-item product__actions-item--addtocart">
-                                        <button class="btn btn-primary btn-lg">افزودن به سبد</button>
+                                        <button class="btn btn-primary btn-lg" onclick="add_to_shop_cart({{ product.id }}, 0)">افزودن به سبد</button>
                                     </div>
                                     <div class="product__actions-item product__actions-item--wishlist">
                                         <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Wishlist">

@@ -3,7 +3,7 @@
         <div class="nav-panel__container container">
           <div class="nav-panel__row">
             <div class="nav-panel__logo">
-              <a href="index.html">
+              <a href="{% url 'main:index' %}">
                 <img src="{{ media_url }}images/shopLogo.png" alt="">
               </a>
             </div>
@@ -11,7 +11,7 @@
             <div class="nav-panel__nav-links nav-links">
               <ul class="nav-links__list">
                 <li class="nav-links__item nav-links__item--with-submenu">
-                  <a href="index.html">
+                  <a href="{% url 'main:index' %}">
                     <span><i class="fa fa-home"></i>&nbsp; خانه</span>
                   </a>
                 </li>
@@ -204,10 +204,10 @@
                 </a>
               </div>
               <div class="indicator">
-                <a href="cart.html" class="indicator__button">
+                <a href="{% url 'orders:shop_cart'%}" class="indicator__button">
                   <span class="indicator__area">
                     <i class="fa fa-shopping-cart"></i>
-                    <span class="indicator__value">3</span>
+                    <span class="indicator__value" id="indicator__value">0</span>
                   </span>
                 </a>
               </div>
