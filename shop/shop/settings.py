@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'apps.accounts.apps.AccountsConfig',
     'apps.products.apps.ProductsConfig',
     'apps.orders.apps.OrdersConfig',
+    'apps.discounts.apps.DiscountsConfig',
+    'apps.payments.apps.PaymentsConfig',
+
     'ckeditor',
     'ckeditor_uploader',
     'django_render_partial',
@@ -136,6 +139,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+# SANDBOX MODE
+
+MERCHANT = "7504EB89-AEAD-48F1-8319-CDE7FAB4CAE4"
+
+SANDBOX = True
 
 CKEDITOR_UPLOAD_PATH = 'images/ckeditor/uploade_files/'
 CKEDITOR_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'

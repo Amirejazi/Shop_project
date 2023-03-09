@@ -10,5 +10,7 @@ urlpatterns = [
     path('add_to_shop_cart/', add_to_shop_cart, name='add_to_shop_cart'),
     path('delete_from_shop_cart/', delete_from_shop_cart, name='delete_from_shop_cart'),
     path('status_of_shop_cart/', status_of_shop_cart, name='status_of_shop_cart'),
-
+    path('credit_order/', CreditOrderView.as_view(), name='credit_order'),
+    path('checkout_order/<int:order_id>/', CheckOutOrderView.as_view(), name='checkout_order'),
+    path('apply_coupon/<int:order_id>/', ApplyCoupon.as_view(), name='apply_coupon'),
 ]

@@ -66,7 +66,17 @@
 										{{ item.product.product_name }}
 									</a>
 								</td>
-								<td class="cart-table__column cart-table__column--price" data-title="قیمت"> {{ item.price | intcomma }}تومان</td>
+                                <td class="cart-table__column cart-table__column--price" data-title="قیمت">
+                                    {% if item.price > item.price_by_discount %}
+                                        <div class="product-card__prices">
+                                            <div class="product-card__old-price">{{ item.price|intcomma }}تومان</div>
+                                            <div class="product-card__new-price">{{ item.price_by_discount|intcomma }}تومان</div>
+                                        </div>
+                                    {% else %}
+                                        <div class="product-card__prices">{{ item.price | intcomma }} تومان</div>
+                                    {% endif %}
+                                </td>
+{#								<td class="cart-table__column cart-table__column--price" data-title="قیمت"> {{ item.price | intcomma }}تومان</td>#}
 								<td class="cart-table__column cart-table__column--quantity" data-title="تعداد">
 									<div class="input-number">
 										<input id="item_input_{{ item.product.id }}" class="form-control input-number__input" type="number" min="1" value="{{ item.qty }}">
@@ -115,7 +125,7 @@
 												<td>{{ order_final_price |intcomma }} تومان</td>
 											</tr>
 										</tfoot>
-									</table><a class="btn btn-primary btn-xl btn-block cart__checkout-button" href="checkout.html">پرداخت</a></div>
+									</table><a class="btn btn-primary btn-xl btn-block cart__checkout-button" href="{% url 'orders:credit_order' %}">ادامه خرید</a></div>
 							</div>
 						</div>
 					</div>

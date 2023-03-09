@@ -12,7 +12,7 @@ class ShopCart:
     def add_to_shop_cart(self, product, qty):
         product_id = str(product.id)
         if product_id not in self.shop_cart:
-            self.shop_cart[product_id] = {"qty": 0, "price": product.price}
+            self.shop_cart[product_id] = {"qty": 0, "price": product.price, "price_by_discount": product.get_price_by_discount()}
         self.shop_cart[product_id]["qty"] += int(qty)
         self.count = len(self.shop_cart.keys())
         self.session.modified = True
@@ -39,13 +39,13 @@ class ShopCart:
             temp[str(product.id)]['product'] = product
 
         for item in temp.values():
-            item['total_price'] = item['price'] * item['qty']
+            item['total_price'] = int(item['price_by_discount']) * item['qty']
             yield item
 
     def calc_total_price(self):
         sum = 0
         for item in self.shop_cart.values():
-            sum += item['qty']*item['price']
+            sum += item['qty']*int(item['price_by_discount'])
         return sum
 
 

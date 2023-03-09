@@ -1,6 +1,4 @@
 
-K
-shop/apps/accounts/admin.py,1\f\1f31c5736a2584a32a2525244525d9bf887b2e04
 J
 shop/apps/accounts/apps.py,b\6\b651f269728825c921e6902d7e6e45d28680acd3
 T
@@ -27,8 +25,6 @@ i
 9venv/Lib/site-packages/django/db/models/fields/related.py,f\3\f3ef4387be7a6dbc7d9e23fbe27580e7c370e707
 f
 6venv/Lib/site-packages/django/contrib/admin/filters.py,8\0\800af3bbab7af31e718074307c5c757397626755
-J
-shop/apps/accounts/urls.py,b\f\bfbec10b763c0c125a7eae67f8cd9327af922e0a
 =
 shop/utils.py,0\a\0a14a599a077a0e963f23e1d62f8b5ece7de5b16
 \
@@ -47,8 +43,6 @@ j
 :shop/templates/products_app/partial/cheapest_products.html,4\f\4f17ac7c9aa41f19cd8fd7c20531b761312ce0d2
 f
 6shop/templates/products_app/partial/last_products.html,8\c\8c72e7b0e55afd0b25f7e93407a03768b57117a7
-R
-"shop/templates/partial/footer.html,6\6\663516f8c15568a6a2cb93455e4125218498f939
 K
 shop/apps/products/admin.py,7\f\7fc50c362660bf1a3c0a4eb0632a778fa4842423
 O
@@ -59,12 +53,6 @@ K
 shop/apps/products/views.py,c\9\c9a4fb4932d96a22efbaa203f1a8a0d83dc18713
 H
 shop/apps/orders/apps.py,e\1\e14103037c9483df8cdf6e2f07572b2132e4b30b
-E
-shop/shop/settings.py,d\5\d5ca7327cf8b6f13dc7ac2f02dbff9027942b5c9
-A
-shop/shop/urls.py,a\7\a7a76b542ce88bc0a71da6a5f6cae25e474d71e3
-_
-/shop/templates/products_app/list_of_groups.html,b\c\bc4187a2ec2d8bb27822b734e17267d403da1ae6
 J
 shop/apps/products/urls.py,8\7\87e36112dc64953efe9f2987ffff107c5177cc11
 M
@@ -77,3 +65,17 @@ H
 shop/static/js/number.js,2\0\201edaa18aec7d25625eb9a8118131863d2deb09
 J
 shop/static/css/custom.css,a\a\aa0310c5d7c52367d1d0fd6ae80c991f3c3fbcee
+Q
+!shop/templates/main_template.html,2\9\29a14ba49aa13680b084c6034500ffee662a5917
+R
+"shop/templates/partial/navbar.html,c\f\cfac527e1c2e541ae1dc513bf8c2c4c3286036f8
+J
+shop/static/js/myscript.js,a\8\a8a6bf677002153e1f48bf6e06b78c7c0360e009
+`
+0shop/templates/products_app/product_details.html,d\d\ddba2574d10f57c871398997a24f651dd6e185a7
+K
+shop/apps/discounts/apps.py,8\a\8ace4bc5c72d5cfad7b5050b20adeaaeeb7dd603
+L
+shop/apps/discounts/admin.py,4\6\462a81833b101f3119752263f62d7bd2bcdb2138
+R
+"shop/templates/partial/header.html,4\8\486e167dd8a955bb66a352dea448fc8ca434efea

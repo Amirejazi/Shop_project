@@ -37,16 +37,24 @@
 								<div class="site-footer__widget footer-links">
 									<h5 class="footer-links__title">حساب کاربری</h5>
 									<ul class="footer-links__list">
-										<li class="footer-links__item">
-											<a href="login.html" class="footer-links__link">
-												ورود
-											</a>
-										</li>
-										<li class="footer-links__item">
-											<a href="register.html" class="footer-links__link">
-												ثبت نام
-											</a>
-										</li>
+                                        {% if user.is_authenticated %}
+                                            <li class="footer-links__item">
+                                                <a href="{% url 'accounts:logout' %}" class="footer-links__link">
+                                                    خروج
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="footer-links__item">
+                                                <a href="{% url 'accounts:login' %}" class="footer-links__link">
+                                                    ورود
+                                                </a>
+                                            </li>
+                                            <li class="footer-links__item">
+                                                <a href="{% url 'accounts:register' %}" class="footer-links__link">
+                                                    ثبت نام
+                                                </a>
+                                            </li>
+                                        {% endif %}
 									</ul>
 								</div>
 							</div>

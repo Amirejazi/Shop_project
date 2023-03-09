@@ -127,12 +127,14 @@ class LogoutUserView(View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
+        session_data = request.session.get('shop_cart')
         logout(request)
+        request.session['shop_cart'] = session_data
         return redirect('main:index')
 
 
 # ========================================================================================================
-class UserPanelView(View, LoginRequiredMixin):
+class UserPanelView(LoginRequiredMixin, View):
     template_name = 'accounts_app/userpanel.html'
     
     def get(self, request, *args, **kwargs):

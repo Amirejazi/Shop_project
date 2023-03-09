@@ -4743,10 +4743,12 @@ screen and (-ms-high-contrast:active) {
 	border-bottom: 1px solid #ebebeb
 }
 .checkout__totals-footer {
-	font-size: 24px
+	font-size: 19px;
+	font-weight: bolder;
 }
 .checkout__totals-footer th {
-	font-weight: 500
+	font-weight: 500;
+	font-weight: bolder;
 }
 .checkout__totals-footer tr:first-child>* {
 	padding-top: 20px
@@ -9539,3 +9541,4 @@ screen and (-ms-high-contrast:active) {
 	justify-content: center !important;
 	flex-wrap: wrap;
 }
+

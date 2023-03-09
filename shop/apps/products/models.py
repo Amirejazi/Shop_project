@@ -4,6 +4,7 @@ from utils import FileUpload
 from django.utils import timezone
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
+from datetime import datetime
 
 
 class Brand(models.Model):
@@ -20,6 +21,7 @@ class Brand(models.Model):
         verbose_name_plural = 'برند ها'
         db_table = 't_brands'
 
+
 # ====================================================================================
 class ProductGroup(models.Model):
     group_title = models.CharField(max_length=100, verbose_name='عنوان گروه کالا')
@@ -27,7 +29,8 @@ class ProductGroup(models.Model):
     image_name = models.ImageField(upload_to=file_upload.upload_to, verbose_name='تصویر گروه کالا')
     description = models.TextField(blank=True, null=True, verbose_name='توضیحات')
     is_active = models.BooleanField(default=True, blank=True, verbose_name='وضعیت فعال/غیرفعال')
-    group_parent = models.ForeignKey('ProductGroup', null=True, blank=True, verbose_name='گروه والد', on_delete=models.CASCADE, related_name='groups')
+    group_parent = models.ForeignKey('ProductGroup', null=True, blank=True, verbose_name='گروه والد',
+                                     on_delete=models.CASCADE, related_name='groups')
     slug = models.SlugField(max_length=100, null=True)
 
     def __str__(self):
@@ -52,10 +55,12 @@ class Feature(models.Model):
         verbose_name_plural = 'ویژگی ها'
         db_table = 't_features'
 
+
 # =======================================================================================
 class Product(models.Model):
     product_name = models.CharField(max_length=500, verbose_name='نام کالا')
-    summery_description = RichTextField(default="", config_name='default', blank=True, null=True, verbose_name='چکبده توضیحات')
+    summery_description = RichTextField(default="", config_name='default', blank=True, null=True,
+                                        verbose_name='چکبده توضیحات')
     description = RichTextUploadingField(config_name='super', blank=True, null=True, verbose_name='توضیحات')
     file_upload = FileUpload('images', 'products')
     image_name = models.ImageField(upload_to=file_upload.upload_to, verbose_name='تصویر کالا')
@@ -75,15 +80,29 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('products:product_details', kwargs={'slug': self.slug})
 
+    def get_price_by_discount(self):
+        list1 = []
+        for dbd in self.discount_basket_details2.all():
+            if (dbd.discount_basket.is_active == True and
+                    dbd.discount_basket.start_date <= timezone.now() <= dbd.discount_basket.end_date):
+                list1.append(dbd.discount_basket.discount)
+        discount = 0
+        if len(list1) > 0:
+            discount = max(list1)
+        return int(self.price - (self.price*discount/100))
+
+
     class Meta:
         verbose_name = 'کالا'
         verbose_name_plural = 'کالا ها'
         db_table = 't_products'
 
+
 # =============================================================================================
 class FeatureValue(models.Model):
     value_title = models.CharField(max_length=200, verbose_name='عنوان مقدار')
-    feature = models.ForeignKey(Feature, on_delete=models.CASCADE, blank=True, null=True, verbose_name='ویژگی', related_name='feature_values')
+    feature = models.ForeignKey(Feature, on_delete=models.CASCADE, blank=True, null=True, verbose_name='ویژگی',
+                                related_name='feature_values')
 
     def __str__(self):
         return f"{self.feature}: {self.value_title}"
@@ -92,12 +111,15 @@ class FeatureValue(models.Model):
         verbose_name = 'مقدار ویژگی'
         verbose_name_plural = 'مقادیر ویژگی ها'
         db_table = 't_feature_value'
+
+
 # =============================================================================================
 class ProductFeature(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='کالا', related_name='product_features')
     feature = models.ForeignKey(Feature, on_delete=models.CASCADE, verbose_name='ویژگی')
     value = models.CharField(max_length=100, verbose_name='مقدار ویژگی کالا')
-    filter_value = models.ForeignKey(FeatureValue, on_delete=models.CASCADE, blank=True, null=True, verbose_name='مقدار فیلتر ویژگی')
+    filter_value = models.ForeignKey(FeatureValue, on_delete=models.CASCADE, blank=True, null=True,
+                                     verbose_name='مقدار فیلتر ویژگی')
 
     def __str__(self):
         return f"{self.product} - {self.feature}: {self.value}"
@@ -107,9 +129,11 @@ class ProductFeature(models.Model):
         verbose_name_plural = 'ویژگی های محصولات'
         db_table = 't_product_feature'
 
+
 # =============================================================================================
 def upload_galleryProduct(instance, filename):
     return f"images/product_gallery/{instance.product.slug}/{filename}"
+
 
 class ProductGallery(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='galley_images', verbose_name='کالا')
