@@ -27,4 +27,4 @@ class OrderForm(forms.Form):
                                   required=False)
     peyment_type = forms.ChoiceField(label="",
                                      choices=[(item.id, item) for item in PeymentType.objects.all()],
-                                     widget=forms.RadioSelect())
+                                     widget=forms.RadioSelect(attrs={'class': 'disabled'}))

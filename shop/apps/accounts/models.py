@@ -55,11 +55,19 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     def __str__(self):
-        return f"{self.name}  {self.family}"
+        if self.name == '' and self.family == '':
+            return self.mobile_number
+        else:
+            return f"{self.name} {self.family}"
 
     @property
     def is_staff(self):
         return self.is_admin
+
+    class Meta:
+        verbose_name = 'کاربر'
+        verbose_name_plural = 'کاربران'
+
 
 # ====================================================================================================
 class Customer(models.Model):
@@ -71,3 +79,8 @@ class Customer(models.Model):
 
     def __str__(self):
         return f"{self.user}"
+
+
+    class Meta:
+        verbose_name = 'مشتری'
+        verbose_name_plural = 'مشتریان'

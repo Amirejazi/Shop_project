@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Order, OrderDetail
+from .models import Order, OrderDetail, PeymentType
+
+@admin.register(PeymentType)
+class PeymentTypeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'peyment_title')
 
 class OrderDetailsInline(admin.TabularInline):
     model = OrderDetail

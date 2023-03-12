@@ -15,35 +15,40 @@
             </div>
         </div>
         <div class="product-card__actions">
-
-            {% if product.price > product.get_price_by_discount %}
-                <div class="product-card__prices">
-                    <div class="product-card__old-price">{{ product.price|intcomma }}تومان</div>
-                    <div class="product-card__new-price">{{ product.get_price_by_discount|intcomma }}تومان</div>
-                </div>
-            {% else %}
-                <div class="product-card__prices">{{ product.price | intcomma }} تومان</div>
-            {% endif %}
+                {% if product.get_number_in_warehouse > 0 %}
+                    {% if product.price > product.get_price_by_discount %}
+                        <div class="product-card__prices">
+                            <div class="product-card__old-price">{{ product.price|intcomma }}تومان</div>
+                            <div class="product-card__new-price">{{ product.get_price_by_discount|intcomma }}تومان</div>
+                        </div>
+                    {% else %}
+                        <div class="product-card__prices">{{ product.price | intcomma }} تومان</div>
+                    {% endif %}
+                {% else %}
+                    <span style="color:red;"> ناموجود</span>
+                {% endif %}
             <div class="product-card__buttons">
+                {% if product.get_number_in_warehouse > 0 %}
+                    <button class="btn btn-primary product-card__addtocart"
+                            type="button" onclick="add_to_shop_cart({{ product.id }},1)">
+                        افزودن به سبد
+                    </button>
+                    <button
+                            class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                            type="button">
+                        <i class="fa fa-heart"></i>
+                        <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                    </button>
+                    <button
+                            class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                            type="button"
+                            onclick="add_to_shop_cart({{ product.id }},1)">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
 
-                <button class="btn btn-primary product-card__addtocart"
-                        type="button" onclick="add_to_shop_cart({{ product.id }},1)">
-                    افزودن به سبد
-                </button>
-                <button
-                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                        type="button">
-                    <i class="fa fa-heart"></i>
-                    <span
-                            class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                </button>
-                <button
-                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                        type="button">
-                    <i class="fa fa-shopping-cart"></i>
-                    <span
-                            class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                </button>
+                    </button>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -65,13 +70,17 @@
         </div>
     </div>
     <div class="product-card__actions">
-        {% if product.price > product.get_price_by_discount %}
-            <div class="product-card__prices">
-                <div class="product-card__old-price">{{ product.price|intcomma }}تومان</div>
-                <div class="product-card__new-price">{{ product.get_price_by_discount|intcomma }}تومان</div>
-            </div>
+        {% if product.get_number_in_warehouse > 0 %}
+            {% if product.price > product.get_price_by_discount %}
+                <div class="product-card__prices">
+                    <div class="product-card__old-price">{{ product.price|intcomma }}تومان</div>
+                    <div class="product-card__new-price">{{ product.get_price_by_discount|intcomma }}تومان</div>
+                </div>
+            {% else %}
+                <div class="product-card__prices">{{ product.price | intcomma }} تومان</div>
+            {% endif %}
         {% else %}
-            <div class="product-card__prices">{{ product.price | intcomma }} تومان</div>
+            <span style="color:red;"> ناموجود</span>
         {% endif %}
         <div class="product-card__buttons">
 
@@ -112,15 +121,19 @@
             </div>
             <div class="product-card__actions">
                 <div class="product-card__availability">موجودی: <span class="text-success">موجود در انبار</span></div>
-                {% if product.price > product.get_price_by_discount %}
-                    <div class="product-card__prices">
-                        <div class="product-card__old-price">{{ product.price|intcomma }}تومان</div>
-                        <div class="product-card__new-price">{{ product.get_price_by_discount|intcomma }}تومان</div>
-                    </div>
+                {% if product.get_number_in_warehouse > 0 %}
+                    {% if product.price > product.get_price_by_discount %}
+                        <div class="product-card__prices">
+                            <div class="product-card__old-price">{{ product.price|intcomma }}تومان</div>
+                            <div class="product-card__new-price">{{ product.get_price_by_discount|intcomma }}تومان</div>
+                        </div>
+                    {% else %}
+                        <div class="product-card__prices">{{ product.price | intcomma }} تومان</div>
+                    {% endif %}
                 {% else %}
-                    <div class="product-card__prices">{{ product.price | intcomma }} تومان</div>
+                    <span style="color:red;"> ناموجود</span>
                 {% endif %}
-                <div class="product-card__buttons">
+                    <div class="product-card__buttons">
                     <button class="btn btn-primary product-card__addtocart" type="button" onclick="add_to_shop_cart({{ product.id }},1)">افزودن به سبد</button>
                     <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" onclick="add_to_shop_cart({{ product.id }},1)">افزودن به سبد</button>
                     <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">

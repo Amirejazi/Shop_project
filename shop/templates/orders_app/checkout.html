@@ -20,66 +20,12 @@
                     </nav>
                 </div>
                 <div class="page-header__title">
-                    <h1>فکتور سفارش شما</h1></div>
+                    <h1>فاکتور سفارش شما</h1></div>
             </div>
         </div>
         <div class="checkout block">
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-6 col-xl-7">
-                        <div class="card mb-lg-0">
-                            <form action="{% url 'orders:checkout_order' order.id %}" method="post">
-                                {% csrf_token %}
-                                <div class="card-body">
-                                    <h3 class="card-title">جزئیات پرداخت</h3>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="checkout-first-name">نام</label>
-                                            {{ form.name }}
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="checkout-last-name">نام خانوادگی</label>
-                                            {{ form.family }}
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="checkout-email"> ایمیل</label>
-                                            {{ form.email }}
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="checkout-phone">تلفن</label>
-                                            {{ form.phone_number }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="checkout-street-address">آدرس </label>
-                                        {{ form.address }}
-                                    </div>
-                                    <div class="form-group">
-                                            <label for="checkout-comment">توضیحات سفارش <span class="text-muted">(اختیاری)</span></label>
-                                            {{ form.description }}
-                                        </div>
-                                    <div class="payment-methods">
-                                        {{ form.peyment_type }}
-                                    </div>
-
-                                    <div class="checkout__agree form-group">
-                                        <div class="form-check"><span class="form-check-input input-check"><span class="input-check__body"><input class="input-check__input" type="checkbox" id="checkout-terms"> <span class="input-check__box"></span>
-                                            <svg class="input-check__icon" width="9px" height="7px">
-                                                <use xlink:href="images/sprite.svg#check-9x7"></use>
-                                            </svg>
-                                        </span>
-                                        </span>
-                                            <label class="form-check-label" for="checkout-terms">من <a target="_blank" href="terms-and-conditions.html">قوانین و مقررات</a> را خوانده و موافقم *</label>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-xl btn-block">ثبت سفارش</button>
-                                </div>
-                            </form>
-                            <div class="card-divider"></div>
-                        </div>
-                    </div>
+                <div class="row flex-row-reverse">
                     <div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">
                         <div class="card mb-0">
                             <div class="card-body">
@@ -131,6 +77,60 @@
                                     <button type="submit" class="btn btn-primary" >اعمال کد تخفیف</button>
                                 </form>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-7">
+                        <div class="card mb-lg-0">
+                            <form action="{% url 'orders:checkout_order' order.id %}" method="post">
+                                {% csrf_token %}
+                                <div class="card-body">
+                                    <h3 class="card-title">جزئیات پرداخت</h3>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="checkout-first-name">نام</label>
+                                            {{ form.name }}
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="checkout-last-name">نام خانوادگی</label>
+                                            {{ form.family }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="checkout-email"> ایمیل</label>
+                                            {{ form.email }}
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="checkout-phone">تلفن</label>
+                                            {{ form.phone_number }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="checkout-street-address">آدرس </label>
+                                        {{ form.address }}
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="checkout-comment">توضیحات سفارش <span class="text-muted">(اختیاری)</span></label>
+                                            {{ form.description }}
+                                        </div>
+                                    <div class="payment-methods">
+                                        {{ form.peyment_type }}
+                                    </div>
+
+                                    <div class="checkout__agree form-group">
+                                        <div class="form-check" ><span class="form-check-input input-check"><span class="input-check__body"><input onclick="AgreeClick()" class="input-check__input" type="checkbox" id="checkout-terms"> <span class="input-check__box"></span>
+                                            <svg class="input-check__icon" width="9px" height="7px">
+                                                <use xlink:href="images/sprite.svg#check-9x7"></use>
+                                            </svg>
+                                        </span>
+                                        </span>
+                                            <label class="form-check-label" for="checkout-terms">من <a target="_blank" href="terms-and-conditions.html">قوانین و مقررات</a> را خوانده و موافقم *</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-xl btn-block" id="subi" disabled>ثبت سفارش</button>
+                                </div>
+                            </form>
+                            <div class="card-divider"></div>
                         </div>
                     </div>
                 </div>

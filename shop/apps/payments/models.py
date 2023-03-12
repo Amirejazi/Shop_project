@@ -4,7 +4,7 @@ from apps.accounts.models import Customer
 from django.utils import timezone
 
 class Payment(models.Model):
-    order = models.ForeignKey(Order,on_delete=models.CASCADE, related_name='payment_order', verbose_name='سفارش')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='payment_order', verbose_name='سفارش')
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='customer_order', verbose_name='مشتری')
     register_date = models.DateTimeField(default=timezone.now, verbose_name='تاریخ پرداخت')
     update_date = models.DateTimeField(auto_now=True, verbose_name='تاریخ ویرایش پرداخت')

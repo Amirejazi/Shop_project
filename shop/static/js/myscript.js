@@ -139,3 +139,13 @@ function sub_to_input_number_in_cart_shop(id){
         }
     });
 }
+
+function AgreeClick(){
+    if (document.querySelector('#subi').disabled )
+    {
+     $('#subi').removeAttr('disabled');
+    }
+    else {
+        document.querySelector('#subi').disabled=true;
+    }
+}

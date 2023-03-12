@@ -6,6 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.orders.models import Order
 from apps.payments.models import Payment
 from apps.accounts.models import Customer
+from apps.warehouses.models import Warehouse, WarehouseType
+from apps.orders.shop_cart import ShopCart
 from django.conf import settings
 import requests
 import json
@@ -76,6 +78,16 @@ class ZarinPalPaymentVerifyView(LoginRequiredMixin, View):
                 if t_status == 100:
                     order.is_finaly = True
                     order.save()
+                    shop_cart = ShopCart(request)
+                    for item in order.orders_details1.all():
+                        Warehouse.objects.create(
+                            warehouse_type=WarehouseType.objects.get(id=2),
+                            user_registered=request.user,
+                            product=item.product,
+                            qty=item.qty,
+                            price=item.product.get_price_by_discount()*item.qty,
+                        )
+                        shop_cart.delete_from_shop_cart(item.product)
 
                     payment.is_finally = True
                     payment.status_code = t_status
@@ -85,6 +97,15 @@ class ZarinPalPaymentVerifyView(LoginRequiredMixin, View):
                 elif t_status == 101:
                     order.is_finaly = True
                     order.save()
+
+                    for item in order.orders_details1.all():
+                        Warehouse.create(
+                            warehouse_type=WarehouseType.objects.get(id=2),
+                            user_registered=request.user,
+                            product=item.product,
+                            qty=item.qty,
+                            price=item.price,
+                        )
 
                     payment.is_finally = True
                     payment.status_code = t_status
@@ -98,6 +119,8 @@ class ZarinPalPaymentVerifyView(LoginRequiredMixin, View):
             else:
                 e_code = req.json()['errors']['code']
                 e_message = req.json()['errors']['message']
+                payment.status_code = e_code
+                payment.save()
                 return redirect('payments:show_verify_message', f"خطا در فرایند پرداخت \nکد خطا :{e_code}\nپیام خطا:{e_message}")
         else:
             return redirect('payments:show_verify_message', f"خطا در فرایند پرداخت")

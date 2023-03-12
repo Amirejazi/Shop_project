@@ -178,8 +178,10 @@
                     <!-- .product__info / end -->
                     <!-- .product__sidebar -->
                     <div class="product__sidebar">
+                        {% if product.get_number_in_warehouse > 0 %}
                         <div class="product__availability">موجودی: <span class="text-success">موجود در انبار</span></div>
                         <div class="product__prices">{{ product.price }} تومان</div>
+                        {% endif %}
                         <!-- .product__options -->
                         <form class="product__options">
                             <!-- <div class="form-group product__option">
@@ -210,35 +212,39 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group product__option">
-                                <label class="product__option-label" for="product-quantity">تعداد</label>
-                                <div class="product__actions">
-                                    <div class="product__actions-item">
-                                        <div class="input-number product__quantity">
-                                            <input id="product-quantity" class="input-number__input form-control form-control-lg" type="number" min="1" value="1">
-                                            <div class="input-number__add" onclick="add_to_input_number('product-quantity')"></div>
-                                            <div class="input-number__sub" onclick="sub_to_input_number('product-quantity')"></div>
+                            {% if product.get_number_in_warehouse > 0 %}
+                                <div class="form-group product__option">
+                                    <label class="product__option-label" for="product-quantity">تعداد</label>
+                                    <div class="product__actions">
+                                        <div class="product__actions-item">
+                                            <div class="input-number product__quantity">
+                                                <input id="product-quantity" class="input-number__input form-control form-control-lg" type="number" min="1" value="1">
+                                                <div class="input-number__add" onclick="add_to_input_number('product-quantity')"></div>
+                                                <div class="input-number__sub" onclick="sub_to_input_number('product-quantity')"></div>
+                                            </div>
+                                        </div>
+                                        <div class="product__actions-item product__actions-item--addtocart">
+                                            <button class="btn btn-primary btn-lg" onclick="add_to_shop_cart({{ product.id }}, 0)">افزودن به سبد</button>
+                                        </div>
+                                        <div class="product__actions-item product__actions-item--wishlist">
+                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Wishlist">
+                                                <svg width="16px" height="16px">
+                                                    <use xlink:href="images/sprite.svg#wishlist-16"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="product__actions-item product__actions-item--compare">
+                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Compare">
+                                                <svg width="16px" height="16px">
+                                                    <use xlink:href="images/sprite.svg#compare-16"></use>
+                                                </svg>
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="product__actions-item product__actions-item--addtocart">
-                                        <button class="btn btn-primary btn-lg" onclick="add_to_shop_cart({{ product.id }}, 0)">افزودن به سبد</button>
-                                    </div>
-                                    <div class="product__actions-item product__actions-item--wishlist">
-                                        <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Wishlist">
-                                            <svg width="16px" height="16px">
-                                                <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="product__actions-item product__actions-item--compare">
-                                        <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Compare">
-                                            <svg width="16px" height="16px">
-                                                <use xlink:href="images/sprite.svg#compare-16"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </div>
-                            </div>
+                            {% else %}
+                                <h4 style="color:red;"> ناموجود</h4>
+                            {% endif %}
                         </form>
                         <!-- .product__options / end -->
                     </div>

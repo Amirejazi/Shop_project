@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 from django.urls import reverse
 from utils import FileUpload
 from django.utils import timezone
@@ -80,6 +81,7 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('products:product_details', kwargs={'slug': self.slug})
 
+
     def get_price_by_discount(self):
         list1 = []
         for dbd in self.discount_basket_details2.all():
@@ -91,7 +93,16 @@ class Product(models.Model):
             discount = max(list1)
         return int(self.price - (self.price*discount/100))
 
-
+    def get_number_in_warehouse(self):
+        sum1 = self.warehouse_products.filter(warehouse_type_id=1).aggregate(Sum('qty'))
+        sum2 = self.warehouse_products.filter(warehouse_type_id=2).aggregate(Sum('qty'))
+        input = 0
+        if sum1['qty__sum'] != None:
+            input = sum1['qty__sum']
+        output = 0
+        if sum2['qty__sum'] != None:
+            output = sum2['qty__sum']
+        return input-output
     class Meta:
         verbose_name = 'کالا'
         verbose_name_plural = 'کالا ها'
