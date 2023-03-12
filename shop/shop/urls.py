@@ -13,6 +13,7 @@ urlpatterns = [
     path('discounts/', include('apps.discounts.urls', namespace='discounts')),
     path('payments/', include('apps.payments.urls', namespace='payments')),
     path('warehouses/', include('apps.warehouses.urls', namespace='warehouses')),
+    path('sc-co-fa/', include('apps.scoring_comment_favorites.urls', namespace='sc-co-fa'
 
     path('ckeditor', include('ckeditor_uploader.urls')),
-    ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

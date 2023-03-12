@@ -53,8 +53,6 @@ K
 shop/apps/products/views.py,c\9\c9a4fb4932d96a22efbaa203f1a8a0d83dc18713
 H
 shop/apps/orders/apps.py,e\1\e14103037c9483df8cdf6e2f07572b2132e4b30b
-J
-shop/apps/products/urls.py,8\7\87e36112dc64953efe9f2987ffff107c5177cc11
 M
 shop/apps/products/filters.py,b\7\b78d040be52368f16ba1a0cd4d6338f8161b4e5c
 ?

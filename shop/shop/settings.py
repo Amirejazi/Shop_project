@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.discounts.apps.DiscountsConfig',
     'apps.payments.apps.PaymentsConfig',
     'apps.warehouses.apps.WarehousesConfig',
+    'apps.scoring_comment_favorites.apps.ScoringCommentFavoritesConfig',
 
     'ckeditor',
     'ckeditor_uploader',
