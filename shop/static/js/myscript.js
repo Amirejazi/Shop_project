@@ -149,3 +149,18 @@ function AgreeClick(){
         document.querySelector('#subi').disabled=true;
     }
 }
+
+function showCreateCommentForm(product_id, comment_id, slug){
+    $.ajax({
+        type: "GET",
+        url: "/sc-co-fa/create_comment/"+slug,
+        data: {
+            product_id: product_id,
+            comment_id: comment_id
+        },
+        success: function(res){
+            $("#btn_"+comment_id).hide();
+            $("#comment_form_"+comment_id).html(res);
+        }
+    });
+}

@@ -651,3 +651,11 @@ textarea.form-control.is-invalid,
 .post-header__title {
 	font-family: inherit;
 }
+
+.comment_children{
+	background-color: beige;
+	width: 95%;
+	margin: 10px;
+	display: flex;
+	justify-content: space-between;
+}

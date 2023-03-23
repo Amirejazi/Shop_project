@@ -324,83 +324,103 @@
                     <div class="product-tabs__pane" id="tab-reviews">
                         <div class="reviews-view">
                             <div class="reviews-view__list">
-                                <h3 class="reviews-view__header">دیدگاه های مشتریان</h3>
                                 <div class="reviews-list">
+                                <h5 class="reviews-view__header">دیدگاه های مشتریان</h5>
                                     <ol class="reviews-list__content">
-                                        <li class="reviews-list__item">
-                                            <div class="review">
-                                                <div class="review__avatar"><img src="images/avatars/avatar-1.jpg" alt=""></div>
-                                                <div class="review__content">
-                                                    <div class="review__author">مریم محمدی</div>
-                                                    <div class="review__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</div>
-                                                    <div class="review__date">27 فروردین 1401</div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="reviews-list__item">
-                                            <div class="review">
-                                                <div class="review__avatar"><img src="images/avatars/avatar-2.jpg" alt=""></div>
-                                                <div class="review__content">
-                                                    <div class="review__author">سعید جعفری</div>
-                                                    <div class="review__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته،</div>
-                                                    <div class="review__date">12 فروردین 1401</div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="reviews-list__item">
-                                            <div class="review">
-                                                <div class="review__avatar"><img src="images/avatars/avatar-3.jpg" alt=""></div>
-                                                <div class="review__content">
-                                                    <div class="review__author">محبوبه حاتمی</div>
-                                                    <div class="review__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون</div>
-                                                    <div class="review__date">2 فروردین 1401</div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        {% if product.comments_of_product.all %}
+                                            {% for comment in product.comments_of_product.all %}
+                                                {% if comment.is_active %}
+                                                    {% if comment.parent == None %}
+                                                        <li class="card reviews-list__item" style="display: flex; justify-content: space-between; border: none">
+                                                            <div class="review ">
+                                                                <div class="review__avatar">
+                                                                    <img src="{{ media_url }}images/avatars/avatar-2.jpg" alt="">
+                                                                </div>
+                                                                <div class="card review__content " style="border: none">
+                                                                    <div class="review__author">{{ comment.commenting_user.name }} : </div>
+                                                                    <div class="review__text">{{ comment.comment_text }}</div>
+                                                                    <div class="review__date">{{ comment.register_date }}</div>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                {% if user.is_authenticated %}
+                                                                    <div>
+                                                                        <a style="width: 170px; margin-right: 30px; margin-top: 20px" class="btn btn-info btn-block" id="btn_{{ comment.id }}" onclick="showCreateCommentForm({{ product.id }}, {{ comment.id }}, '{{ product.slug }}');"> پاسخ </a>
+                                                                    </div>
+                                                                    <div class="reply__class" id="comment_form_{{ comment.id }}">
+                                                                    </div>
+                                                                {% endif %}
+                                                            </div>
+                                                        </li>
+                                                        {% for item in comment.comments_child.all %}
+                                                            {% if item.is_active %}
+                                                                <li class="reviews-list__item comment_children card" ">
+                                                                    <div class="review">
+                                                                        <div class="review__avatar">
+                                                                            <div class="review__reply" style="">درپاسخ به {{ item.commenting_user.name }} : </div>
+                                                                            <img style="margin-right: 50px;" src="{{ media_url }}images/avatars/avatar-2.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="review__content card" style="border: none; background-color: beige;">
+                                                                            <div class="review__author">{{ item.commenting_user.name }} : </div>
+                                                                            <div class="review__text" style="margin-top: 10px">{{ item.comment_text }}</div>
+                                                                            <div class="review__date">{{ item.register_date }}</div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% else %}
+                                                    {% endif %}
+                                                    <hr>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                            <h4 class="reviews-view__header">هنوز دیدگاهی ثبت نشده است</h4>
+                                        {% endif %}
                                     </ol>
-                                    <div class="reviews-list__pagination">
-                                        <ul class="pagination justify-content-center">
-                                            <li class="page-item disabled">
-                                                <a class="page-link page-link--with-arrow" href="" aria-label="Previous">
-                                                    <svg class="page-link__arrow page-link__arrow--left" aria-hidden="true" width="8px" height="13px">
-                                                        <use xlink:href="images/sprite.svg#arrow-rounded-left-8x13"></use>
-                                                    </svg>
-                                                </a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="">1</a></li>
-                                            <li class="page-item active"><a class="page-link" href="">2 <span class="sr-only">(کنونی)</span></a></li>
-                                            <li class="page-item"><a class="page-link" href="">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link page-link--with-arrow" href="" aria-label="Next">
-                                                    <svg class="page-link__arrow page-link__arrow--right" aria-hidden="true" width="8px" height="13px">
-                                                        <use xlink:href="images/sprite.svg#arrow-rounded-right-8x13"></use>
-                                                    </svg>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+{#                                    <div class="reviews-list__pagination">#}
+{#                                        <ul class="pagination justify-content-center">#}
+{#                                            <li class="page-item disabled">#}
+{#                                                <a class="page-link page-link--with-arrow" href="" aria-label="Previous">#}
+{#                                                    <svg class="page-link__arrow page-link__arrow--left" aria-hidden="true" width="8px" height="13px">#}
+{#                                                        <use xlink:href="images/sprite.svg#arrow-rounded-left-8x13"></use>#}
+{#                                                    </svg>#}
+{#                                                </a>#}
+{#                                            </li>#}
+{#                                            <li class="page-item"><a class="page-link" href="">1</a></li>#}
+{#                                            <li class="page-item active"><a class="page-link" href="">2 <span class="sr-only">(کنونی)</span></a></li>#}
+{#                                            <li class="page-item"><a class="page-link" href="">3</a></li>#}
+{#                                            <li class="page-item">#}
+{#                                                <a class="page-link page-link--with-arrow" href="" aria-label="Next">#}
+{#                                                    <svg class="page-link__arrow page-link__arrow--right" aria-hidden="true" width="8px" height="13px">#}
+{#                                                        <use xlink:href="images/sprite.svg#arrow-rounded-right-8x13"></use>#}
+{#                                                    </svg>#}
+{#                                                </a>#}
+{#                                            </li>#}
+{#                                        </ul>#}
+{#                                    </div>#}
                                 </div>
-                            </div>
-                            <form class="reviews-view__form">
-                                <h3 class="reviews-view__header">دیدگاه هاخود را بنویسید</h3>
-                                <div class="row">
-                                    <div class="col-12 col-lg-9 col-xl-8">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="review-author">نام شما</label>
-                                                <input type="text" class="form-control" id="review-author" >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="review-text">دیدگاه شما</label>
-                                            <textarea class="form-control" id="review-text" rows="6"></textarea>
-                                        </div>
-                                        <div class="form-group mb-0">
-                                            <button type="submit" class="btn btn-primary btn-lg">ارسال نظر</button>
+                            </div >
+                        <div style="padding-top: 50px">
+                                {% if user.is_authenticated %}
+                                    <h5 class="reviews-view__header">دیدگاه خود را بنویسید</h5>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-9 col-xl-8">
+                                            {% render_partial 'sc-co-fa:create_comment' slug=product.slug %}
                                         </div>
                                     </div>
-                                </div>
-                            </form>
+                                {% else %}
+                                    <h5>
+                                    برای درج دیدگاه خود باید
+                                    <a href="{% url 'accounts:login' %}?next=/products/product_details/{{ product.slug }}/" >ورود</a>
+                                        یا
+                                    <a href="{% url 'accounts:register' %}?next=/products/product_details/{{ product.slug }}/" >ثبت نام</a>
+                                    کنید
+                                    </h5>
+                                {% endif %}
+                        </div>
+
                         </div>
                     </div>
                 </div>
