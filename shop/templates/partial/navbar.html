@@ -196,10 +196,10 @@
                 </div>
               </div>
               <div class="indicator">
-                <a href="wishlist.html" class="indicator__button">
+                <a href="{% url 'sc-co-fa:user_favorites' %}" class="indicator__button">
                   <span class="indicator__area">
                     <i class="fa fa-heart"></i>
-                    <span class="indicator__value">0</span>
+                    <span class="indicator__value" id="favorites__value">0</span>
                   </span>
                 </a>
               </div>

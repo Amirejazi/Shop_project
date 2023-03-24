@@ -35,14 +35,8 @@ I
 shop/static/js/page1.html,1\2\125b23ced4c13d3960656d1ef6312daf81557e4e
 `
 0shop/templates/accounts_app/change_password.html,7\f\7f62070cf2d1f579958512f714437943e36dc276
-g
-7shop/templates/products_app/partial/popular_groups.html,8\f\8f432c98616bc2c4988850ab7c5b82f964a1aa67
 f
 6venv/Lib/site-packages/django/contrib/admin/options.py,2\e\2ebbb94cce75252f281a4061bf8a76750eb4ce8a
-j
-:shop/templates/products_app/partial/cheapest_products.html,4\f\4f17ac7c9aa41f19cd8fd7c20531b761312ce0d2
-f
-6shop/templates/products_app/partial/last_products.html,8\c\8c72e7b0e55afd0b25f7e93407a03768b57117a7
 K
 shop/apps/products/admin.py,7\f\7fc50c362660bf1a3c0a4eb0632a778fa4842423
 O
@@ -61,8 +55,6 @@ M
 Svenv/Lib/site-packages/django/contrib/admin/static/admin/js/vendor/jquery/jquery.js,2\f\2f694e6b7404b48508f486bb797d3caf37ac6093
 H
 shop/static/js/number.js,2\0\201edaa18aec7d25625eb9a8118131863d2deb09
-X
-(shop/templates/orders_app/shop_cart.html,6\9\696ec9cb51cff418208d8bfb042692ac91b11c81
 J
 shop/apps/accounts/urls.py,b\f\bfbec10b763c0c125a7eae67f8cd9327af922e0a
 [
@@ -96,8 +88,6 @@ o
 w
 G.idea/sonarlint/issuestore/a/8/a8a6bf677002153e1f48bf6e06b78c7c0360e009,6\0\60c229858d37e56d48cba531aa927a734cb701d9
 w
-G.idea/sonarlint/issuestore/c/f/cfac527e1c2e541ae1dc513bf8c2c4c3286036f8,0\d\0d5ac04168a9d88e6929dec136c95275f299c86d
-w
 G.idea/sonarlint/issuestore/4/8/486e167dd8a955bb66a352dea448fc8ca434efea,a\7\a751dbd77fbe014b6cfc7a4a038636d279ceb285
 o
 ?shop/apps/accounts/migrations/0004_alter_customer_image_name.py,b\2\b221d902ee639cfe32c84f38a855c6b49a38a2d1
@@ -127,8 +117,6 @@ K
 shop/apps/discounts/apps.py,8\a\8ace4bc5c72d5cfad7b5050b20adeaaeeb7dd603
 L
 shop/apps/discounts/tests.py,b\8\b88c80865ddb0620c0403f2307a7814aa146dee8
-M
-shop/apps/discounts/models.py,9\9\99abbc8c56cec968dfa551dde6a64aa520a3e386
 O
 shop/apps/discounts/__init__.py,e\0\e02a1a4c575590a4adf34838a9b54204b9f5371c
 L
@@ -177,20 +165,12 @@ J
 shop/apps/payments/urls.py,8\8\8800c28d2e255c171db119860e4bbed0759a4276
 _
 /shop/templates/payments_app/verify_message.html,e\f\efebabaf460716e053d09c68ac53b13750ef9a98
-e
-5shop/templates/orders_app/partial/show_shop_cart.html,2\b\2b8ed004d755e015fa3787ac30bd0d145b4eb77d
-_
-/shop/templates/products_app/list_of_groups.html,b\c\bc4187a2ec2d8bb27822b734e17267d403da1ae6
 V
 &venv/Lib/site-packages/requests/api.py,0\d\0d390758bf1c3e59d6ce914e8f5fbd5634553e46
 Z
 *venv/Lib/site-packages/django/urls/conf.py,e\8\e8f06664fecbbc538b64e2b6ae5c1ea3780ac74f
-H
-shop/apps/orders/urls.py,8\3\835094981607697c435eefa24f44de28881a6e47
 L
 shop/apps/discounts/admin.py,4\6\462a81833b101f3119752263f62d7bd2bcdb2138
-I
-shop/apps/orders/views.py,e\1\e149926887c95954911c1d8a48b30734b1aa2cbc
 M
 shop/apps/orders/shop_cart.py,1\0\103055ab30df9381eb8ddb4e4473ce67ff54cc17
 W
@@ -205,8 +185,6 @@ L
 shop/apps/payments/models.py,9\e\9e3b883ccfcc34337b5a150e1861f1e4bcada0a0
 L
 shop/apps/accounts/models.py,5\6\56ad2497d4a6902df845a335161e6125a0bc72c3
-`
-0shop/templates/partial/products/product_box.html,c\e\cecf47d6101695034b415ecf6802576b8f0f0cda
 L
 shop/apps/warehouses/urls.py,9\b\9b20e2c2b4f26e950026451cb2c50dc21bda499d
 K
@@ -316,8 +294,6 @@ G.idea/sonarlint/issuestore/b/1/b1fdcfac5935bd1a938492382d1ec951c3c0649d,8\7\87
 w
 G.idea/sonarlint/issuestore/b/f/bfbec10b763c0c125a7eae67f8cd9327af922e0a,9\a\9a297db0e7714fa8c9966313b9ad25cb384ac155
 w
-G.idea/sonarlint/issuestore/c/7/c7907effd5876dee0257619e1268b6645aa2dcfa,4\5\45956b29e9328cccdbd8ef7298cdc214bfdfa82b
-w
 G.idea/sonarlint/issuestore/d/5/d5eb88735f774c3e8f223b7c8d92edf7ff196615,a\8\a8433b181c7d90750c97d2f3ddfd5a440df4b240
 w
 G.idea/sonarlint/issuestore/8/f/8fe84f241ac4fc80a96b64b3593cc57cd794aa08,d\c\dc99340336f94b67c0b918075ec81c87fd963c45
@@ -338,8 +314,6 @@ G.idea/sonarlint/issuestore/8/b/8b0821a36a3f36bdd538d2c074ce135a25a11caf,3\8\38
 w
 G.idea/sonarlint/issuestore/e/f/efebabaf460716e053d09c68ac53b13750ef9a98,d\4\d493810967c5e4a14efecbefcdae91d2d9c5f7f3
 w
-G.idea/sonarlint/issuestore/b/c/bc4187a2ec2d8bb27822b734e17267d403da1ae6,4\b\4b924b632e141c610c32675c7c9a3fd87d54ce92
-w
 G.idea/sonarlint/issuestore/1/5/15de7cbe5114b6810eb3d2e5a705a4c5c6ed9c3e,2\f\2ff918f317e36f5414c35cca317fdd1cb59efbfa
 w
 G.idea/sonarlint/issuestore/8/8/8800c28d2e255c171db119860e4bbed0759a4276,4\e\4ededd091c9a46dd033f5e41596fceb6ea4fd831
@@ -357,10 +331,6 @@ w
 G.idea/sonarlint/issuestore/1/e/1e3f159a1be1e2a8d093930fc850ea03d70476bf,4\4\44915e84c2a3110ce6004f293dfc2790cd467d71
 [
 +shop/apps/warehouses/migrations/__init__.py,7\0\70f2a067f93f713923fc06cc933e2e5e7b717260
-E
-shop/shop/settings.py,d\5\d5ca7327cf8b6f13dc7ac2f02dbff9027942b5c9
-b
-2shop/templates/products_app/products_of_group.html,6\b\6be42bc614aaecdca19c9fa4f0e4491c796b530b
 [
 +shop/apps/scoring_comment_favorites/apps.py,4\d\4d273f3af8c7b9d97a2f64aa60136815eb6bba0e
 I
@@ -369,3 +339,43 @@ K
 shop/apps/payments/admin.py,f\e\feae179ffaee72e1a56c5d65164f133982fa1cab
 h
 8shop/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css,0\b\0bf7ebdf6f160b833f44c2e91e0e9652c8d8d69e
+R
+"shop/templates/partial/header.html,4\8\486e167dd8a955bb66a352dea448fc8ca434efea
+\
+,shop/apps/scoring_comment_favorites/forms.py,f\b\fbd175db72edbbd8e0cbbf231031077a5f3b9d64
+A
+shop/shop/urls.py,a\7\a7a76b542ce88bc0a71da6a5f6cae25e474d71e3
+\
+,shop/apps/scoring_comment_favorites/admin.py,e\8\e828d135a2583881fda676491760f5f9a2997bc3
+M
+shop/apps/discounts/models.py,9\9\99abbc8c56cec968dfa551dde6a64aa520a3e386
+I
+shop/static/css/style.css,c\7\c7907effd5876dee0257619e1268b6645aa2dcfa
+^
+.venv/Lib/site-packages/django/http/response.py,0\6\063c3b8518bb62cf2b9c5bf1fa5e460585732f02
+H
+shop/apps/orders/urls.py,8\3\835094981607697c435eefa24f44de28881a6e47
+I
+shop/apps/orders/views.py,e\1\e149926887c95954911c1d8a48b30734b1aa2cbc
+_
+/shop/templates/sc-co-fa_app/create_comment.html,2\e\2eac15ad7083ddcedd99e1ba2b25a09027a03a1b
+b
+2shop/templates/products_app/products_of_group.html,6\b\6be42bc614aaecdca19c9fa4f0e4491c796b530b
+i
+9shop/templates/products_app/partial/related_products.html,7\d\7d8df46af130b6e8c3772aceb5ea3a6645a15026
+g
+7shop/templates/products_app/partial/product_groups.html,0\d\0d62a41f04277c747cffe358ca914537a61ec78a
+g
+7shop/templates/products_app/partial/popular_groups.html,8\f\8f432c98616bc2c4988850ab7c5b82f964a1aa67
+f
+6shop/templates/products_app/partial/last_products.html,8\c\8c72e7b0e55afd0b25f7e93407a03768b57117a7
+h
+8shop/templates/products_app/partial/features_filter.html,0\c\0ce4cbe0be3c3ec46a85a0882e7d2ab841007f4d
+j
+:shop/templates/products_app/partial/cheapest_products.html,4\f\4f17ac7c9aa41f19cd8fd7c20531b761312ce0d2
+_
+/shop/templates/products_app/partial/brands.html,3\3\33bcc19c1f7ed5e74f8ea848c85c702f4f07403b
+_
+/shop/templates/products_app/list_of_groups.html,b\c\bc4187a2ec2d8bb27822b734e17267d403da1ae6
+X
+(shop/templates/partial/price_filter.html,0\6\068051e2d5082265e4df12294ec15fb537e0a51b

@@ -169,10 +169,34 @@
 								<li>ولتاژ: 20 ولت</li>
 								<li>ظرفیت باتری: 2 ساعت</li>
 							</ul> -->
-                        <ul class="product__meta">
-                            <li class="product__meta-availability">موجودی: <span class="text-success">موجود در انبار</span></li>
-                            <li>برند: <a href="">{{ product.brand }}</a></li>
-                            <li>تعداد نظرات: <a href="">7</a> نظر</li>
+                        <ul class="product__meta2">
+                            <li style="margin-left: 200px; margin-right: 10px">برند: <span style="color: #ee4156">{{ product.brand }}</span></li>
+                            <li>تعداد نظرات: <span style="color: #ee4156">{{ product.comments_of_product.all|length }}</span> نظر</li>
+                        </ul>
+
+                        <ul class="scoring">
+                            <li style="margin-left: 130px; margin-right: 10px">میانگین امتیاز کالا : <span id="avg_score" style="color: #ee4156">{{ product.get_average_score }}</span></li>
+                            {% if user.is_authenticated %}
+                                <li>
+                                    {% if product.get_user_score > 0 %}
+                                        {% with ''|center:5 as range%}
+                                            {% for i in range %}
+                                                {% if forloop.counter <= product.get_user_score %}
+                                                    <span id="star_{{ forloop.counter }}" class="fa fa-star checked cursor_pointer" onclick="addScore({{ forloop.counter }}, {{ product.id }})"></span>
+                                                {% else %}
+                                                    <span id="star_{{ forloop.counter }}" class="fa fa-star cursor_pointer" onclick="addScore({{ forloop.counter }}, {{ product.id }})"></span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    {% else %}
+                                        <span id="star_1" class="fa fa-star cursor_pointer" onclick="addScore(1, {{ product.id }})"></span>
+                                        <span id="star_2" class="fa fa-star cursor_pointer" onclick="addScore(2, {{ product.id }})"></span>
+                                        <span id="star_3" class="fa fa-star cursor_pointer" onclick="addScore(3, {{ product.id }})"></span>
+                                        <span id="star_4" class="fa fa-star cursor_pointer" onclick="addScore(4, {{ product.id }})"></span>
+                                        <span id="star_5" class="fa fa-star cursor_pointer" onclick="addScore(5, {{ product.id }})"></span>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                     <!-- .product__info / end -->

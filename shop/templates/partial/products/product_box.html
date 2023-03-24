@@ -35,19 +35,33 @@
                     </button>
                     <button
                             class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                            type="button">
-                        <i class="fa fa-heart"></i>
-                        <span
-                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                    </button>
-                    <button
-                            class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
                             type="button"
                             onclick="add_to_shop_cart({{ product.id }},1)">
                         <i class="fa fa-shopping-cart"></i>
                         <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
 
                     </button>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    {% if product.get_user_favorite %}
+                        <button
+                                class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                                type="button"
+                                onclick="FavoriteUpdate({{ product.id }})">
+                            <i id="heart_{{ product.id }}" class="fa fa-heart favorite"></i>
+                            <span
+                                    class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                    {% else %}
+                        <button
+                                class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                                type="button"
+                                onclick="FavoriteUpdate({{ product.id }})">
+                            <i id="heart_{{ product.id }}" class="fa fa-heart "></i>
+                            <span
+                                    class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

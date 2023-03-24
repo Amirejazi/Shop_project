@@ -1,11 +1,11 @@
 from django.db import models
-from django.db.models import Sum
+from django.db.models import Sum, Avg
 from django.urls import reverse
 from utils import FileUpload
 from django.utils import timezone
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
-from datetime import datetime
+from middlewares.middlewares import RequestMiddlewares
 
 
 class Brand(models.Model):
@@ -102,6 +102,30 @@ class Product(models.Model):
         if sum2['qty__sum'] != None:
             output = sum2['qty__sum']
         return input-output
+
+
+    def get_user_score(self):
+        request = RequestMiddlewares(get_response=None)
+        request = request.thread_local.current_request
+        score = 0
+        user_score = self.scoring_product.filter(scoring_user=request.user)
+        if user_score.count() > 0:
+            score = user_score[0].score
+        return round(score, 1)
+
+
+
+    def get_average_score(self):
+        avgScore = self.scoring_product.all().aggregate(Avg('score'))['score__avg']
+        if avgScore == None:
+            avgScore = 0
+        return avgScore
+
+    def get_user_favorite(self):
+        request = RequestMiddlewares(get_response=None)
+        request = request.thread_local.current_request
+        flag = self.favorite_product.filter(favorite_user=request.user).exists()
+        return flag
 
 
     class Meta:

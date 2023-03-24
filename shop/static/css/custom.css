@@ -659,3 +659,36 @@ textarea.form-control.is-invalid,
 	display: flex;
 	justify-content: space-between;
 }
+
+.product__meta2 {
+	list-style: none;
+	margin: 12px 0 0;
+	padding: 12px 0 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	border-top: 1px solid #ebebeb
+}
+
+.scoring{
+	list-style: none;
+	margin: 12px 0 0;
+	padding: 12px 0 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.checked{
+	color: orange;
+}
+
+.cursor_pointer{
+	cursor: pointer;
+}
+
+.favorite{
+	color: #f50361;
+}

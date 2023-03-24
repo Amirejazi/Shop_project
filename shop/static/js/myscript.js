@@ -14,8 +14,18 @@ function status_of_shop_cart(){
         }
     });
 }
-
+function status_of_favorites(){
+    $.ajax({
+        type: "GET",
+        url: "/sc-co-fa/status_of_favorite/",
+        success: function (res){
+            $("#favorites__value").text(res);
+            //$("#indicator__value_mobile").text(res);
+        }
+    });
+}
 status_of_shop_cart();
+status_of_favorites();
 
 function removeParam(key, sourceURL) {
     var rtn = sourceURL.split("?")[0],
@@ -164,3 +174,61 @@ function showCreateCommentForm(product_id, comment_id, slug){
         }
     });
 }
+
+function addScore(score, product_id){
+    var starRating = document.querySelectorAll(".fa-star");
+    starRating.forEach(element => {
+        element.classList.remove("checked");
+    });
+    for (let i=1; i<=score; i++)
+    {
+        const element = document.getElementById("star_" + i);
+        element.classList.add("checked");
+    }
+    $.ajax({
+        type: "GET",
+        url: "/sc-co-fa/add_score/",
+        data: {
+            product_id: product_id,
+            score: score
+        },
+        success: function (res){
+            alert("امتیاز شما با موفقیت ثبت شد");
+            $("#avg_score").text(res);
+        }
+    });
+}
+
+function FavoriteUpdate(product_id)
+{
+    const element = document.getElementById("heart_" + product_id)
+    if (element.classList.contains("favorite")){
+        $.ajax({
+            type: "GET",
+            url: "/sc-co-fa/remove_from_favorite/",
+            data: {
+                product_id: product_id,
+            },
+            success: function (res){
+                element.classList.remove("favorite");
+                alert(res);
+                status_of_favorites();
+            }
+        });
+    }
+    else{
+        $.ajax({
+            type: "GET",
+            url: "/sc-co-fa/add_to_favorite/",
+            data: {
+                product_id: product_id,
+            },
+            success: function (res){
+                element.classList.add("favorite");
+                alert(res);
+                status_of_favorites();
+            }
+        });
+    }
+}
+

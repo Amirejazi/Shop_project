@@ -59,10 +59,10 @@
                             {% for item in shop_cart %}
 							    <tr class="cart-table__row">
 								<td class="cart-table__column cart-table__column--image">
-									<a href=""><img src="{{ media_url }}{{ item.product.image_name }}" alt=""></a>
+									<a href="{{ item.product.get_absolute_url }}"><img src="{{ media_url }}{{ item.product.image_name }}" alt=""></a>
 								</td>
 								<td class="cart-table__column cart-table__column--product">
-									<a href="" class="cart-table__product-name">
+									<a href="{{ item.product.get_absolute_url }}" class="cart-table__product-name">
 										{{ item.product.product_name }}
 									</a>
 								</td>
