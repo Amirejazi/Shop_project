@@ -65,8 +65,6 @@ L
 shop/apps/discounts/forms.py,4\9\49af18edf96595726415bebdafab954d659fcddf
 R
 "shop/templates/partial/footer.html,6\6\663516f8c15568a6a2cb93455e4125218498f939
-R
-"shop/templates/main_app/index.html,b\1\b1fdcfac5935bd1a938492382d1ec951c3c0649d
 K
 shop/apps/accounts/admin.py,1\f\1f31c5736a2584a32a2525244525d9bf887b2e04
 K
@@ -339,18 +337,12 @@ K
 shop/apps/payments/admin.py,f\e\feae179ffaee72e1a56c5d65164f133982fa1cab
 h
 8shop/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css,0\b\0bf7ebdf6f160b833f44c2e91e0e9652c8d8d69e
-R
-"shop/templates/partial/header.html,4\8\486e167dd8a955bb66a352dea448fc8ca434efea
 \
 ,shop/apps/scoring_comment_favorites/forms.py,f\b\fbd175db72edbbd8e0cbbf231031077a5f3b9d64
-A
-shop/shop/urls.py,a\7\a7a76b542ce88bc0a71da6a5f6cae25e474d71e3
 \
 ,shop/apps/scoring_comment_favorites/admin.py,e\8\e828d135a2583881fda676491760f5f9a2997bc3
 M
 shop/apps/discounts/models.py,9\9\99abbc8c56cec968dfa551dde6a64aa520a3e386
-I
-shop/static/css/style.css,c\7\c7907effd5876dee0257619e1268b6645aa2dcfa
 ^
 .venv/Lib/site-packages/django/http/response.py,0\6\063c3b8518bb62cf2b9c5bf1fa5e460585732f02
 H
@@ -359,8 +351,6 @@ I
 shop/apps/orders/views.py,e\1\e149926887c95954911c1d8a48b30734b1aa2cbc
 _
 /shop/templates/sc-co-fa_app/create_comment.html,2\e\2eac15ad7083ddcedd99e1ba2b25a09027a03a1b
-b
-2shop/templates/products_app/products_of_group.html,6\b\6be42bc614aaecdca19c9fa4f0e4491c796b530b
 i
 9shop/templates/products_app/partial/related_products.html,7\d\7d8df46af130b6e8c3772aceb5ea3a6645a15026
 g
@@ -371,11 +361,7 @@ f
 6shop/templates/products_app/partial/last_products.html,8\c\8c72e7b0e55afd0b25f7e93407a03768b57117a7
 h
 8shop/templates/products_app/partial/features_filter.html,0\c\0ce4cbe0be3c3ec46a85a0882e7d2ab841007f4d
-j
-:shop/templates/products_app/partial/cheapest_products.html,4\f\4f17ac7c9aa41f19cd8fd7c20531b761312ce0d2
 _
 /shop/templates/products_app/partial/brands.html,3\3\33bcc19c1f7ed5e74f8ea848c85c702f4f07403b
-_
-/shop/templates/products_app/list_of_groups.html,b\c\bc4187a2ec2d8bb27822b734e17267d403da1ae6
 X
 (shop/templates/partial/price_filter.html,0\6\068051e2d5082265e4df12294ec15fb537e0a51b

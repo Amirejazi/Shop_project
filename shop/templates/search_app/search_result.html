@@ -1,0 +1,27 @@
+{% extends "main_template.html" %}
+{% load render_partial %}
+
+{% block title %}
+    نتیجه جستجو
+{% endblock title %}
+
+
+{% block content %}
+    {% if products %}
+        <div class="container">
+            <div class="block block-products-carousel" data-layout="grid-5">
+                <h3 style="text-align: center">نتیجه جستوجوی شما</h3>
+                <div class="product-flexbox ">
+                    {% for product in products %}
+                        {% include 'partial/products/product_box.html' with type=1 %}
+                        <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container" style="padding: 100px">
+            <h3 style="text-align: center;color: #a71d2a"> کالایی با این عنوان وجود ندارد! </h3>
+        </div>
+    {% endif %}
+{% endblock %}
