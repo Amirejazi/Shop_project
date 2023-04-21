@@ -2483,10 +2483,10 @@ screen and (-ms-high-contrast:active) {
 	text-decoration: none
 }
 .share-links__item--type--like a {
-	background: #4267b2
+	background: #3669d3
 }
 .share-links__item--type--like a:hover {
-	background: #3b5c9f
+	background: #1f57d5
 }
 .share-links__item--type--tweet a {
 	background: #1b95e0
@@ -4488,13 +4488,13 @@ screen and (-ms-high-contrast:active) {
 	background: #00a2e8
 }
 .footer-newsletter__social-link--youtube a {
-	background: #e52e2e
+	background: #0f74a8;
 }
 .footer-newsletter__social-link--instagram a {
-	background: #815dc7
+	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
 }
-.footer-newsletter__social-link--rss a {
-	background: #ffee41568
+.footer-newsletter__social-link--github a {
+	background: #242324
 }
 .footer-newsletter__form {
 	display: -ms-flexbox;
@@ -5648,7 +5648,7 @@ screen and (-ms-high-contrast:active) {
 	-ms-grid-column: 2
 }
 .product__wishlist-compare {
-	display: none
+
 }
 .product__name {
 	margin-bottom: 22px
@@ -7831,7 +7831,7 @@ screen and (min-width:480px) and (-ms-high-contrast:active) {
 .block-features--layout--boxed .block-features__item {
 	-ms-flex-direction: column;
 	flex-direction: column;
-	background: #f7f7f7;
+	background: linear-gradient(to top, rgba(12,203,238,0.7), #ee4156);
 	border-radius: 3px;
 	text-align: center;
 	-ms-flex-align: center;

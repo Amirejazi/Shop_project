@@ -1,0 +1,35 @@
+{% if products %}
+    <div class="container">
+        <h3 class="compare_title">کالا های انتخابی برای مقایسه</h3>
+        <table class="table table-bordered">
+            <tr class="tr_compare_list">
+                <th>ویژگی کالا / کالا</th>
+                {% for product in products %}
+                    <th>
+                        <i class="fa fa-times product-remove" onclick="delete_from_compare_list({{ product.id }})"></i>
+                         {{ product.product_name }}
+                    </th>
+                {% endfor %}
+            </tr>
+            {% for feature in features %}
+                <tr>
+                    <td class="td_compare_list">{{ feature }}</td>
+                    {% for product in products %}
+                        <td style="text-align: center">
+                            {% for item in product.product_features.all %}
+                                {% if item.feature == feature %}
+                                    <span style="margin: 5px">{{ item.filter_value.value_title }}</span>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <div class="container">
+        <h3 class="text_message_for_favorite_compare_list"> هنوز کالایی در لیست مقایسه ثبت نشده </h3>
+    </div>
+{% endif %}

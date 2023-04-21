@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .forms import UserCreationForm, UserChangeForm
-from .models import CustomUser, Customer
+from .models import *
 
 
 @admin.register(CustomUser)
@@ -29,3 +29,11 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ('user', 'phon_number')
+
+# ===================================================================================
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'email', 'is_seen', 'register_date')
+    ordering = ('register_date',)
+
+

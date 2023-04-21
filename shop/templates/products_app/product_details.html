@@ -1,5 +1,6 @@
 {% extends "main_template.html" %}
 {% load render_partial %}
+{% load social_share %}
 
 {% block title %}
     فروشگاه
@@ -57,16 +58,27 @@
                     <!-- .product__info -->
                     <div class="product__info">
                         <div class="product__wishlist-compare">
-                            <button type="button" class="btn btn-sm btn-light btn-svg-icon" data-toggle="tooltip" data-placement="right" title="Wishlist">
-                                <svg width="16px" height="16px">
-                                    <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                </svg>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-light btn-svg-icon" data-toggle="tooltip" data-placement="right" title="Compare">
-                                <svg width="16px" height="16px">
-                                    <use xlink:href="images/sprite.svg#compare-16"></use>
-                                </svg>
-                            </button>
+                             {% if user.is_authenticated %}
+                                {% if product.get_user_favorite %}
+                                    <button
+                                            class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                                            type="button"
+                                            onclick="FavoriteUpdate({{ product.id }})">
+                                        <i id="heart_{{ product.id }}" class="fa fa-heart favorite"></i>
+                                        <span
+                                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                    </button>
+                                {% else %}
+                                    <button
+                                            class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                                            type="button"
+                                            onclick="FavoriteUpdate({{ product.id }})">
+                                        <i id="heart_{{ product.id }}" class="fa fa-heart "></i>
+                                        <span
+                                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                    </button>
+                                {% endif %}
+                            {% endif %}
                         </div>
                         <h1 class="product__name">{{ product.product_name }}</h1>
                         <div class="product__rating">
@@ -198,6 +210,15 @@
                                 </li>
                             {% endif %}
                         </ul>
+                    <br>
+                    <ul class="product__meta2">
+                            <li style="margin-left: 200px; margin-bottom: 20px">
+                                <button id="compare_btn_{{ product.id }}" type="button" class="btn btn-info" onclick="add_to_compare_list({{ product.id }})" style="cursor: pointer"> مقایسه  <i class="fa fa-clone"></i></button>
+                            </li>
+                            <li style="margin-bottom: 10px ">
+                                {% post_to_telegram 'یوهول شاپ: {{ product.product_name }}' '' '<i class="fa fa-share-alt"></i>'  "btn btn-secondary share-btn" %}
+                            </li>
+                        </ul>
                     </div>
                     <!-- .product__info / end -->
                     <!-- .product__sidebar -->
@@ -250,20 +271,6 @@
                                         <div class="product__actions-item product__actions-item--addtocart">
                                             <button class="btn btn-primary btn-lg" onclick="add_to_shop_cart({{ product.id }}, 0)">افزودن به سبد</button>
                                         </div>
-                                        <div class="product__actions-item product__actions-item--wishlist">
-                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Wishlist">
-                                                <svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="product__actions-item product__actions-item--compare">
-                                            <button type="button" class="btn btn-secondary btn-svg-icon btn-lg" data-toggle="tooltip" title="Compare">
-                                                <svg width="16px" height="16px">
-                                                    <use xlink:href="images/sprite.svg#compare-16"></use>
-                                                </svg>
-                                            </button>
-                                        </div>
                                     </div>
                                 </div>
                             {% else %}
@@ -273,13 +280,7 @@
                         <!-- .product__options / end -->
                     </div>
                     <!-- .product__end -->
-                    <div class="product__footer">
-                        <div class="product__share-links share-links">
-                            <ul class="share-links__list">
-                                <li class="share-links__item share-links__item--type--like"><a href="">اشتراک گذاری</a></li>
-                            </ul>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="product-tabs">
@@ -297,52 +298,15 @@
                         <div class="spec">
                             <h3 class="spec__header">مشخصات فنی</h3>
                             <div class="spec__section">
-                                <h4 class="spec__section-title">عمومی</h4>
-                                <div class="spec__row">
-                                    <div class="spec__name">جنس</div>
-                                    <div class="spec__value">آلومینیوم، پلاستیک</div>
-                                </div>
-                                <div class="spec__row">
-                                    <div class="spec__name">نوع موتور</div>
-                                    <div class="spec__value">بدون برس</div>
-                                </div>
-                                <div class="spec__row">
-                                    <div class="spec__name">ولتاژ باتری</div>
-                                    <div class="spec__value">18 ولت</div>
-                                </div>
-                                <div class="spec__row">
-                                    <div class="spec__name">نوع باتری</div>
-                                    <div class="spec__value">لیتیوم یون</div>
-                                </div>
-                                <div class="spec__row">
-                                    <div class="spec__name">تعداد سرعت ها</div>
-                                    <div class="spec__value">2</div>
-                                </div>
-                                <div class="spec__row">
-                                    <div class="spec__name">زمان شارژ</div>
-                                    <div class="spec__value">2 ساعت</div>
-                                </div>
-                                <div class="spec__row">
-                                    <div class="spec__name">وزن</div>
-                                    <div class="spec__value">1.5 کیلوگرم</div>
-                                </div>
+                                {% for feature in all_features %}
+                                    <div class="spec__row">
+                                        <div class="spec__name">{{ feature.feature }}</div>
+                                        <div class="spec__value">{{ feature.value }}</div>
+                                    </div>
+                                {% endfor %}
+
                             </div>
-                            <div class="spec__section">
-                                <h4 class="spec__section-title">ابعاد</h4>
-                                <div class="spec__row">
-                                    <div class="spec__name">طول</div>
-                                    <div class="spec__value">99 mm</div>
-                                </div>
-                                <div class="spec__row">
-                                    <div class="spec__name">عرض</div>
-                                    <div class="spec__value">207 mm</div>
-                                </div>
-                                <div class="spec__row">
-                                    <div class="spec__name">ارتفاع</div>
-                                    <div class="spec__value">208 mm</div>
-                                </div>
-                            </div>
-                            <div class="spec__disclaimer">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با</div>
+
                         </div>
                     </div>
                     <div class="product-tabs__pane" id="tab-reviews">
@@ -357,9 +321,16 @@
                                                     {% if comment.parent == None %}
                                                         <li class="card reviews-list__item" style="display: flex; justify-content: space-between; border: none">
                                                             <div class="review ">
-                                                                <div class="review__avatar">
-                                                                    <img src="{{ media_url }}images/avatars/avatar-2.jpg" alt="">
-                                                                </div>
+                                                                {% if comment.commenting_user.customer_mode.first.image_name %}
+                                                                    <div class="review__avatar">
+                                                                        <img src="{{ media_url }}{{ comment.commenting_user.customer_mode.first.image_name }}" alt="">
+                                                                    </div>
+                                                                {% else %}
+                                                                    <div class="review__avatar">
+                                                                        <img src="{{ media_url }}/images/customers/profile-picture.png" alt="">
+                                                                    </div>
+                                                                {% endif %}
+
                                                                 <div class="card review__content " style="border: none">
                                                                     <div class="review__author">{{ comment.commenting_user.name }} : </div>
                                                                     <div class="review__text">{{ comment.comment_text }}</div>
@@ -380,10 +351,17 @@
                                                             {% if item.is_active %}
                                                                 <li class="reviews-list__item comment_children card" ">
                                                                     <div class="review">
-                                                                        <div class="review__avatar">
-                                                                            <div class="review__reply" style="">درپاسخ به {{ item.commenting_user.name }} : </div>
-                                                                            <img style="margin-right: 50px;" src="{{ media_url }}images/avatars/avatar-2.jpg" alt="">
-                                                                        </div>
+                                                                        {% if comment.commenting_user.customer_mode.first.image_name %}
+                                                                            <div class="review__avatar">
+                                                                                <div class="review__reply" style="">درپاسخ به {{ item.commenting_user.name }} : </div>
+                                                                                <img src="{{ media_url }}{{ comment.commenting_user.customer_mode.first.image_name }}" alt="">
+                                                                            </div>
+                                                                        {% else %}
+                                                                            <div class="review__avatar">
+                                                                                <div class="review__reply" style="">درپاسخ به {{ item.commenting_user.name }} : </div>
+                                                                                <img src="{{ media_url }}/images/customers/profile-picture.png" alt="">
+                                                                            </div>
+                                                                        {% endif %}
                                                                         <div class="review__content card" style="border: none; background-color: beige;">
                                                                             <div class="review__author">{{ item.commenting_user.name }} : </div>
                                                                             <div class="review__text" style="margin-top: 10px">{{ item.comment_text }}</div>

@@ -18,3 +18,9 @@ urlpatterns = [
 
     path('ckeditor', include('ckeditor_uploader.urls')),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+
+admin.site.site_header = 'پنل مدیریت یوهول شاپ'

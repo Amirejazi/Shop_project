@@ -5,23 +5,23 @@
             <div class="block-header__divider"></div>
             <ul class="block-header__groups-list">
                 <li>
-                    <button type="button"
-                            class="block-header__group block-header__group--active">همه</button>
+                    <a type="button" href="{% url 'products:list_of_groups' %}"
+                            class="block-header__group_custom">همه</a>
                 </li>
                 {% for group in product_groups%}
                     <li>
-                        <button type="button" class="block-header__group">{{ group.group_title }}</button>
+                        <a href="{% url 'products:products_of_group' slug=group.slug %}" class="block-header__group_custom">{{ group.group_title }}</a>
                     </li>
                 {% endfor %}
             </ul>
-            <div class="block-header__arrows-list">
-                <button class="block-header__arrow block-header__arrow--left" type="button">
-                    <i class="fas fa-angle-right"></i>
-                </button>
-                <button class="block-header__arrow block-header__arrow--right" type="button">
-                    <i class="fas fa-angle-left"></i>
-                </button>
-            </div>
+{#            <div class="block-header__arrows-list">#}
+{#                <button class="block-header__arrow block-header__arrow--left" type="button">#}
+{#                    <i class="fas fa-angle-right"></i>#}
+{#                </button>#}
+{#                <button class="block-header__arrow block-header__arrow--right" type="button">#}
+{#                    <i class="fas fa-angle-left"></i>#}
+{#                </button>#}
+{#            </div>#}
         </div>
         <div class="block-products-carousel__slider">
             <div class="product-flexbox">

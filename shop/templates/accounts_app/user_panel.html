@@ -1,0 +1,9 @@
+{% extends "user_panel_template.html" %}
+{% load render_partial %}
+
+{% block user_panel_content %}
+    <div class="dashboard">
+		{% include 'partial/user_info.html' %}
+        {% render_partial 'accounts:show_last_orders' %}
+	</div>
+{% endblock %}

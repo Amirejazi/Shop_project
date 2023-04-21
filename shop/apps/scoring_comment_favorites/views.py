@@ -8,6 +8,7 @@ from apps.products.models import Product
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 class CommentView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         product_id = request.GET.get('product_id')
@@ -75,7 +76,7 @@ def remove_from_favorite(request):
     flag = Favorite.objects.filter(Q(product=product) & Q(favorite_user=request.user)).exists()
     if flag:
         Favorite.objects.filter(Q(product=product) & Q(favorite_user=request.user)).delete()
-        return HttpResponse("این کالا این کالا از علاقه مندی های شما حذف شد")
+        return HttpResponse("این کالا از علاقه مندی های شما حذف شد")
     return HttpResponse("این کالا قبلا از لیست علاقه مندی حذف شده")
 
 def status_of_favorite(request):

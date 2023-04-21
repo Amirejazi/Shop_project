@@ -1,0 +1,58 @@
+{% extends "user_panel_template.html" %}
+{% load render_partial %}
+
+{% block user_panel_content %}
+   <div class="card">
+       <div class="card-header">
+           <h4>ویرایش پروفایل</h4></div>
+       <div class="card-divider"></div>
+       <div class="card-body">
+           <div class="row no-gutters">
+               <div class="col-12 col-lg-7 col-xl-6">
+                   <form method="post" action="" enctype="multipart/form-data">
+                       {% csrf_token %}
+                        <div class="form-group">
+                           <label for="profile-phone">شماره موبایل</label>
+                           {{ form.mobile_number}}
+                       </div>
+                       <div class="form-group">
+                           <label for="profile-first-name">نام</label>
+                           {{ form.name }}
+                       </div>
+                       <div class="form-group">
+                           <label for="profile-last-name">نام خانوادگی</label>
+                           {{ form.family }}
+                       </div>
+                       <div class="form-group">
+                           <label for="profile-phone">شماره تلفن</label>
+                           {{ form.phon_number}}
+                       </div>
+                       <div class="form-group">
+                           <label for="profile-phone">ایمیل</label>
+                           {{ form.email}}
+                       </div>
+                       <div class="form-group">
+                           <label for="profile-email">آدرس </label>
+                           {{ form.address }}
+                       </div>
+                       <div class="form-group" style="display: flex">
+                           <div>
+                               <label for="profile-phone">تصویر :</label>
+                               {{ form.image}}
+                           </div>
+                           {% if image_url %}
+                                <div class="profile-card__avatar" style="margin-right: 25px"><img src="{{ media_url }}{{ image_url }}" alt=""></div>
+                            {% else %}
+                                <div class="profile-card__avatar" style="margin-right: 25px"><img src="{{ media_url }}/images/customers/profile-picture.png" alt=""></div>
+                            {% endif %}
+                       </div>
+                       <div class="form-group mt-5 mb-0">
+                           <button type="submit" class="btn btn-primary">ذخیره</button>
+                           <a href="{% url 'accounts:user_panel' %}"  class="btn btn-info">انصراف</a>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+{% endblock %}

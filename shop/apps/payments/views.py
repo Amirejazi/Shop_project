@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from apps.orders.models import Order
+from apps.orders.models import Order, OrderState
 from apps.payments.models import Payment
 from apps.accounts.models import Customer
 from apps.warehouses.models import Warehouse, WarehouseType
@@ -77,6 +77,7 @@ class ZarinPalPaymentVerifyView(LoginRequiredMixin, View):
                 t_status = req.json()['data']['code']
                 if t_status == 100:
                     order.is_finaly = True
+                    order.order_state = OrderState.objects.get(order_state_title='ثبت شده')
                     order.save()
                     shop_cart = ShopCart(request)
                     for item in order.orders_details1.all():
@@ -96,6 +97,7 @@ class ZarinPalPaymentVerifyView(LoginRequiredMixin, View):
                     return redirect('payments:show_verify_message', f"پرداخت با موفقیت انجام شد کد رهگیری شما:{str(req.json()['data']['ref_id'])}")
                 elif t_status == 101:
                     order.is_finaly = True
+                    order.order_state = OrderState.objects.get(order_state_title='ثبت شده')
                     order.save()
 
                     for item in order.orders_details1.all():

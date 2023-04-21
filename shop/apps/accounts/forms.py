@@ -83,3 +83,35 @@ class ChangePasswordForm(forms.Form):
 # =======================================================================================
 class RememberPasswordForm(forms.Form):
     mobile_number = forms.CharField(label='شماره موبایل', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'شماره موبایل را وارد کنید'}))
+
+
+class UpdateProfileForm(forms.Form):
+    mobile_number = forms.CharField(label='',
+                                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'شماره موبایل را وارد کنید', 'readonly': 'readonly'}))
+    name = forms.CharField(label='', required=False,
+                                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'نام خود را وارد کنید'}))
+    family = forms.CharField(label='', required=False,
+                                    widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'نام خانوادگی خود را وارد کنید'}))
+    email = forms.EmailField(label='', required=False,
+                           widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'ایمیل خود را وارد کنید'}))
+    phon_number = forms.CharField(label='', required=False,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'شماره خود را وارد کنید'}))
+    address = forms.CharField(label='', required=False,
+                           widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'آدرس خود را وارد کنید', 'rows': '2'}))
+    image = forms.ImageField(required=False,
+                             widget=forms.FileInput(attrs={'class': 'form-control'}))
+
+
+class ContactMessageForm(forms.Form):
+    full_name = forms.CharField(label='',
+                                  error_messages={'required': 'این فیلد نمی تواند خالی باشد!'},
+                                  widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'نام شما'}))
+    email = forms.EmailField(label='',
+                                error_messages={'required': 'این فیلد نمی تواند خالی باشد!'},
+                                widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'آدرس ایمیل'}))
+    subject = forms.CharField(label='',
+                                  error_messages={'required': 'این فیلد نمی تواند خالی باشد!'},
+                                  widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'موضوع'}))
+    message = forms.CharField(label='',
+                                error_messages={'required': 'این فیلد نمی تواند خالی باشد!'},
+                                widget=forms.Textarea(attrs={'class': 'form-control', 'rows': '3'}))

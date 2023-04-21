@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
@@ -15,7 +13,6 @@ from .forms import OrderForm
 from apps.discounts.forms import CouponForm
 from apps.discounts.models import Coupon
 from django.db.models import Q
-
 
 class ShopCartView(View):
     def get(self, request, *args, **kwargs):

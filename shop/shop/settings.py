@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.search.apps.SearchConfig',
     'apps.scoring_comment_favorites.apps.ScoringCommentFavoritesConfig',
 
+    'django_social_share',
     'ckeditor',
     'ckeditor_uploader',
     'django_render_partial',
@@ -78,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'apps.main.views.media_admin',
+                'django.template.context_processors.request',
             ],
         },
     },

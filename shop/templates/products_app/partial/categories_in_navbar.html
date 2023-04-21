@@ -1,0 +1,31 @@
+<div class="nav-links__megamenu nav-links__megamenu--size--nl">
+                    <!-- .megamenu -->
+                    <div class="megamenu">
+                      <div class="row">
+                          {% for main_group in main_groups %}
+                            <div class="col-4">
+                              <ul class="megamenu__links megamenu__links--level--0">
+                                <li class="megamenu__item megamenu__item--with-submenu">
+                                  <a href="{% url 'products:list_of_groups' %}">{{ main_group.group_title }}</a>
+                                  <ul class="megamenu__links megamenu__links--level--1">
+                                      {% for group in main_group.groups.all %}
+                                        <li class="megamenu__item">
+                                          <a href="{% url 'products:products_of_group' group.slug %}">{{ group.group_title }}</a>
+                                          <ul>
+                                              {% for mini_group in group.groups.all %}
+                                                <li class="megamenu__links--level--2">
+                                                  <a href="{% url 'products:products_of_group' mini_group.slug %}">{{ mini_group.group_title }}</a>
+                                                </li>
+                                              {% endfor %}
+                                          </ul>
+                                        </li>
+                                      {% endfor %}
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                          {% endfor %}
+                      </div>
+                    </div>
+                    <!-- .megamenu / end -->
+                  </div>

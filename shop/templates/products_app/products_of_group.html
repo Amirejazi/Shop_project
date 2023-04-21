@@ -18,7 +18,9 @@
                                 /
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{% url 'products:products_of_group' slug=current_group.slug %}">{{ current_group.group_title }}</a>
+                                <a href="{% url 'products:products_of_group' slug=current_group.slug %}">
+                                    {{ current_group.group_title }}
+                                </a>
                             </li>
 
                         </ol>
@@ -41,9 +43,7 @@
 {#                                            <div class="filter filter--opened" data-collapse-item>#}
                                             <div class="filter " data-collapse-item>
                                                 <button type="button" class="filter__title" data-collapse-trigger>دسته ها
-                                                    <svg class="filter__arrow" width="12px" height="7px">
-                                                        <use xlink:href="images/sprite.svg#arrow-rounded-down-12x7"></use>
-                                                    </svg>
+                                                    <i class="fa fa-angle-down" style="position: absolute;left: 0px;"></i>
                                                 </button>
                                                 <div class="filter__body" data-collapse-content>
                                                     <div class="filter__container">
@@ -65,68 +65,6 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="block-sidebar__item d-none d-lg-block">
-                            <div class="widget-products widget">
-                                <h4 class="widget__title">محصولات جدید</h4>
-                                <div class="widget-products__list">
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image">
-                                            <a href="product.html">
-                                                <img src="https://picsum.photos/700/700" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name"><a href="product.html">اره برقی برندیکس مدل 300 وات</a></div>
-                                            <div class="widget-products__prices">749,000 تومان</div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image">
-                                            <a href="product.html">
-                                                <img src="https://picsum.photos/700/700" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name"><a href="product.html">اره چوب بری IRadix مدل 2700 وات</a></div>
-                                            <div class="widget-products__prices">1,019,000 تومان</div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image">
-                                            <a href="product.html">
-                                                <img src="https://picsum.photos/700/700" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name"><a href="product.html">پیچ گوشتی برقی برندیکس مدل 200 وات</a></div>
-                                            <div class="widget-products__prices">850,000 تومان</div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image">
-                                            <a href="product.html">
-                                                <img src="https://picsum.photos/700/700" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name"><a href="product.html">دریل برندیکس سری 3 مدل 2018</a></div>
-                                            <div class="widget-products__prices"><span class="widget-products__new-price">949,000 تومان</span> <span class="widget-products__old-price">1,189,000 تومان</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image">
-                                            <a href="product.html">
-                                                <img src="https://picsum.photos/700/700" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name"><a href="product.html">میخ کوب برقی برندیکس مدل 2019</a></div>
-                                            <div class="widget-products__prices">1,700,000 تومان</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="shop-layout__content">

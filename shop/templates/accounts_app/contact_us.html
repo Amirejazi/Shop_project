@@ -1,0 +1,75 @@
+{% extends "main_template.html" %}
+
+{% block title %}
+    تماس با ما
+{% endblock title %}
+
+{% block content %}
+    <div class="site__body">
+			<div class="page-header">
+				<div class="page-header__container container">
+					<div class="page-header__breadcrumb">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="{% url "main:index" %}">خانه</a>
+									/
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">تماس با ما</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="page-header__title">
+						<h1>تماس با ما</h1></div>
+				</div>
+			</div>
+			<div class="block">
+				<div class="container">
+					<div class="card mb-0 contact-us">
+						<div class="card-body">
+							<div class="contact-us__container">
+								<div class="row">
+									<div class="col-12 col-lg-6 pb-4 pb-lg-0">
+										<h4 class="contact-us__header card-title">آدرس ما</h4>
+                                        <p>اگر شما نیاز به ارتباط با ما در فروشگاه یوهول شاپ دارید، می‌توانید از راه‌های ارتباطی زیر با ما تماس بگیرید:</p>
+										<div class="contact-us__address">
+											<p><strong>آدرس : </strong>
+													تهران، رسالت، خیابان شهید کرد
+												<br><strong>ایمیل :</strong> ejaziamirhosein@gmail.com
+												<br><strong>شماره تلفن :</strong> 09037800887
+                                                <br><strong>استفاده از فرم تماس با ما در وب‌سایت</strong></p>
+											<p>ما همواره در خدمت شما هستیم تا بهترین تجربه خرید را برای شما فراهم کنیم.از آنجایی که همیشه به دنبال بهبود خدمات و ارائه بهترین تجربه برای مشتریان خود هستیم، از ارتباط با شما و شنیدن نظرات، پیشنهادات و انتقادات شما استقبال می‌کنیم.</p>
+										</div>
+									</div>
+									<div class="col-12 col-lg-6">
+										<h4 class="contact-us__header card-title">یک پیام برای ما بگذارید</h4>
+										<form action="" method="post">
+                                            {% csrf_token %}
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="form-name">نام شما</label>
+													{{ form.full_name }}
+												</div>
+												<div class="form-group col-md-6">
+													<label for="form-email">ایمیل</label>
+													{{ form.email }}
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="form-subject">موضوع</label>
+												{{ form.subject }}
+											</div>
+											<div class="form-group">
+												<label for="form-message">پیام</label>
+												{{ form.message }}
+											</div>
+											<button type="submit" class="btn btn-primary">ارسال پیام</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

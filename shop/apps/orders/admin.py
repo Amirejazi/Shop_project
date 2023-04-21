@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderDetail, PeymentType
+from .models import Order, OrderDetail, PeymentType, OrderState
 
 @admin.register(PeymentType)
 class PeymentTypeAdmin(admin.ModelAdmin):
@@ -11,5 +11,11 @@ class OrderDetailsInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('customer', 'register_date', 'is_finaly', 'discount')
+    list_display = ('customer', 'order_state', 'register_date', 'is_finaly', 'discount')
+    ordering = ('register_date',)
     inlines = [OrderDetailsInline]
+
+
+@admin.register(OrderState)
+class OrderStateAdmin(admin.ModelAdmin):
+    list_display = ('id', 'order_state_title')

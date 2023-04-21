@@ -210,7 +210,10 @@ function FavoriteUpdate(product_id)
                 product_id: product_id,
             },
             success: function (res){
-                element.classList.remove("favorite");
+                var heart = document.querySelectorAll("#heart_" + product_id);
+                heart.forEach(element => {
+                    element.classList.remove("favorite");
+                });
                 alert(res);
                 status_of_favorites();
             }
@@ -224,11 +227,75 @@ function FavoriteUpdate(product_id)
                 product_id: product_id,
             },
             success: function (res){
-                element.classList.add("favorite");
+                var heart = document.querySelectorAll("#heart_" + product_id);
+                heart.forEach(element => {
+                    element.classList.add("favorite");
+                });
                 alert(res);
                 status_of_favorites();
             }
         });
     }
 }
+function delete_from_favorite_list(product_id){
+    $.ajax({
+        type: "GET",
+        url: "/sc-co-fa/remove_from_favorite/",
+        data: {
+            product_id: product_id,
+        },
+        success: function (res){
+            alert(res+"\n لطفا یکبار رفرش کنید");
+            status_of_favorites();
+        }
+    });
+}
+function add_to_compare_list(product_id)
+{
+    const element = document.getElementById("compare_btn_" + product_id);
+    if (element.classList.contains("btn-info")) {
+        $.ajax({
+            type: "GET",
+            url: "/products/add_to_compare_list/",
+            data: {
+                product_id: product_id
+            },
+            success: function (res) {
+                alert(res);
+                element.classList.remove("btn-info");
+                element.classList.add("btn-primary");
+            }
+        });
+    }
+    else {
+        $.ajax({
+        type: "GET",
+        url: "/products/delete_from_compare_list",
+        data:{
+            product_id: product_id
+        },
+        success: function (res){
+            $("#compare_list").html(res);
+            element.classList.remove("btn-primary");
+            element.classList.add("btn-info");
+            alert(" کالا از لیست مقایسه حذف شد");
+        }
+    });
+    }
+}
 
+function delete_from_compare_list(product_id)
+{
+    $.ajax({
+        type: "GET",
+        url: "/products/delete_from_compare_list",
+        data:{
+            product_id: product_id
+        },
+        success: function (res){
+            $("#compare_list").html(res);
+            element.classList.remove("btn-primary");
+            element.classList.add("btn-info");
+        }
+    });
+}

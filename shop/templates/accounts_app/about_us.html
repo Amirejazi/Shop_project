@@ -1,0 +1,54 @@
+{% extends "main_template.html" %}
+
+{% block title %}
+    درباره ما
+{% endblock title %}
+
+{% block content %}
+    <div class="site__body" style="margin-top: -170px">
+			<div class="block about-us" >
+				<div class="about-us__image"></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12 col-xl-10">
+							<div class="about-us__body"  >
+								<h1 class="about-us__title">درباره ما</h1>
+								<div class="about-us__text typography">
+									<p>خوش آمدید به فروشگاه یوهول شاپ، یک فروشگاه آنلاین که با استفاده از فریمورک جنگو  توسعه داده شده است. ما به عنوان یک فروشگاه آنلاین، انواع محصولاتی را با کیفیت برای شما عرضه می‌کنیم. ما به دنبال ایجاد تجربه‌ای ساده و راحت برای خریداران خود هستیم.
+
+تیم یوهول شاپ تلاش می‌کند تا با ارائه محصولات با کیفیت، بهبود تجربه خرید شما را فراهم کند. ما همواره به دنبال ارائه خدماتی بهتر و افزایش رضایت مشتریان خود هستیم.</p>
+									<p>در صورت داشتن هرگونه پرسش یا نیاز به راهنمایی، تیم پشتیبانی یوهول شاپ همواره در خدمت شماست.
+
+ما به ارائه محصولات با کیفیت و امکانات مناسب برای خریداران خود علاقه‌مندیم. از محصولات الکترونیکی گرفته تا لوازم خانگی و پوشاک، تلاش می‌کنیم تا محصولاتی را برای شما فراهم کنیم که به نیازهای شما پاسخ دهیم</p>
+								</div>
+								<div class="about-us__team">
+									<h2 class="about-us__team-title">با تیم ما آشنا شوید</h2>
+									<div class="about-us__team-subtitle text-muted">آیا میخواهید در تیم دوستانه ما کار کنید؟
+										<br><a href="{% url 'accounts:contact_us' %}">تماس با ما</a> </div>
+									<div class="about-us__teammates teammates">
+										<div class="owl-carousel">
+											<div class="teammates__item teammate">
+												<div class="teammate__avatar"><img src="" alt=""></div>
+												<div class="teammate__name"> </div>
+												<div class="teammate__position text-muted"></div>
+											</div>
+											<div class="teammates__item teammate">
+												<div class="teammate__avatar"><img src="{{ media_url }}images/teammates/amirhoseinEjazi.jpg" alt=""></div>
+												<div class="teammate__name">امیرحسین اعجازی </div>
+												<div class="teammate__position text-muted">توسعه دهنده</div>
+											</div>
+											<div class="teammates__item teammate">
+												<div class="teammate__avatar"><img src="" alt=""></div>
+												<div class="teammate__name"> </div>
+												<div class="teammate__position text-muted"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

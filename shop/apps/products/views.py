@@ -1,17 +1,17 @@
 from django.core.paginator import Paginator
-from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-
+from .compare import CompareProduct
 from .filters import ProductFilter
 from .models import ProductGroup, Product, FeatureValue, Brand
-from django.db.models import Q, Count, Min, Max
-
+from django.db.models import Q, Count, Min, Max, Sum
+from apps.warehouses.models import WarehouseType
 
 # ارزان ترین محصولات
 def get_cheapest_products(request, *args, **kwargs):
-    products = Product.objects.filter(is_active=True).order_by('price')[:5]
-    product_groups = ProductGroup.objects.filter(Q(is_active=True) & Q(group_parent=None))
+    products = Product.objects.filter(is_active=True).order_by('price')[:6]
+    product_groups = ProductGroup.objects.filter(Q(is_active=True) & ~Q(group_parent=None))[:4]
     context = {
         'product_groups': product_groups,
         'products': products
@@ -21,14 +21,23 @@ def get_cheapest_products(request, *args, **kwargs):
 
 # محصولات جدید
 def get_last_products(request, *args, **kwargs):
-    products = Product.objects.filter(is_active=True).order_by('-published_date')[:5]
-    product_groups = ProductGroup.objects.filter(Q(is_active=True) & Q(group_parent=None))
+    products = Product.objects.filter(is_active=True).order_by('-published_date')[:6]
+    product_groups = ProductGroup.objects.filter(Q(is_active=True) & ~Q(group_parent=None))[:4]
     context = {
         'product_groups': product_groups,
         'products': products
     }
     return render(request, 'products_app/partial/last_products.html', context)
 
+# پرفروش ترین محصولات
+def get_most_selling_products(request):
+    products = Product.objects.filter(Q(is_active=True) & Q(warehouse_products__warehouse_type=WarehouseType.objects.get(id=2)))\
+                   .annotate(count=Sum('warehouse_products__qty'))\
+                   .order_by('-count')[:7]
+
+    big_cart_product = products[0]  # پرفروش ترین محصول رو برای اون کارت بزگه تو تمپلیت جدا میکنیم
+    products = products[1:7]
+    return render(request, 'products_app/partial/most_selling_products.html', {'products': products, 'product': big_cart_product})
 
 # دسته های محبوب
 def get_popular_groups(request, *args, **kwargs):
@@ -43,10 +52,12 @@ def get_popular_groups(request, *args, **kwargs):
 class ProductDetailsView(View):
     def get(self, request, slug):
         product = get_object_or_404(Product, slug=slug)
-        features = product.product_features.all()[:3]
+        features = product.product_features.all()[:4]
+        all_features = product.product_features.all()
         context = {
             'product': product,
-            'features': features
+            'features': features,
+            'all_features': all_features,
         }
         if product.is_active:
             return render(request, 'products_app/product_details.html', context)
@@ -174,3 +185,53 @@ def get_fliter_value_for_feature(request):
         feature_values = FeatureValue.objects.filter(feature=feature_id)
         res = {fv.value_title: fv.id for fv in feature_values}
         return JsonResponse(data=res, safe=False)
+
+
+# صفحه اصلی مقایسه : نمایش کالا های اضافه شده به لیست
+class ShowCompareTableView(View):
+    def get(self, request, *args, **kwargs):
+        compare_list = CompareProduct(request)
+        return render(request, 'products_app/compare_list.html', {'compare_list': compare_list})
+
+
+# نمایش جدول کالا های لیست مقایسه
+def compare_table(request):
+    compare_list = CompareProduct(request)
+
+    products = []
+    for product_id in compare_list.compare_product:
+        product = Product.objects.get(id=product_id)
+        products.append(product)
+
+    features = []
+    for product in products:
+        for item in product.product_features.all():
+            if item.feature not in features:
+                features.append(item.feature)
+    context = {
+        'products': products,
+        'features': features
+    }
+    return render(request, 'products_app/partial/compare_table.html', context)
+
+
+def add_to_compare_list(request):
+    product_id = request.GET['product_id']
+    compare_list = CompareProduct(request)
+    compare_list.add_to_compare_product(product_id)
+    return HttpResponse("کالا به لیست مقایسه اضافه شد")
+
+def delete_from_compare_list(request):
+    product_id = request.GET['product_id']
+    compare_list = CompareProduct(request)
+    compare_list.delete_from_compare_product(product_id)
+    return redirect('products:show_compare_table')
+
+
+def categories_in_navbar(request):
+    main_groups = ProductGroup.objects.filter(Q(is_active=True) & Q(group_parent=None))[:6]
+    return render(request, 'products_app/partial/categories_in_navbar.html', {'main_groups': main_groups})
+
+def categories_in_mobile_menu(request):
+    main_groups = ProductGroup.objects.filter(Q(is_active=True) & Q(group_parent=None))
+    return render(request, 'products_app/partial/categories_in_mobile_menu.html', {'main_groups': main_groups})

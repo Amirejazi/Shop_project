@@ -60,7 +60,7 @@ class Feature(models.Model):
 # =======================================================================================
 class Product(models.Model):
     product_name = models.CharField(max_length=500, verbose_name='نام کالا')
-    summery_description = RichTextField(default="", config_name='default', blank=True, null=True,verbose_name='چکبده توضیحات')
+    summery_description = RichTextField(default="", config_name='default', blank=True, null=True, verbose_name='چکبده توضیحات')
     description = RichTextUploadingField(config_name='super', blank=True, null=True, verbose_name='توضیحات')
     file_upload = FileUpload('images', 'products')
     image_name = models.ImageField(upload_to=file_upload.upload_to, verbose_name='تصویر کالا')

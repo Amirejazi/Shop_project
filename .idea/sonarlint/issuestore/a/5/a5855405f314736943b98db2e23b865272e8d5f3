@@ -1,4 +1,4 @@
 
-cpython:S1192"KDefine a constant instead of duplicating this literal 'main:index' 7 times.(ِۚ
-�python:S1192O"~Define a constant instead of duplicating this literal 'اطلاعات وارد شده نا معتبر می باشد!' 4 times.(�ŕ������
-@python:S1481"(Remove the unused local variable "user".(����
+cpython:S1192"KDefine a constant instead of duplicating this literal 'main:index' 7 times.(ِۚ
+�python:S1192T"~Define a constant instead of duplicating this literal 'اطلاعات وارد شده نا معتبر می باشد!' 6 times.(�ŕ������
+@python:S1481!"(Remove the unused local variable "user".(����

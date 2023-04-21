@@ -14,6 +14,19 @@ class PeymentType(models.Model):
         verbose_name = 'نوع پرداخت'
         verbose_name_plural = 'انواع روش پرداخت'
         db_table = "t_peyment_types"
+
+# =================================================================
+class OrderState(models.Model):
+    order_state_title = models.CharField(max_length=50, verbose_name='عنوان وضعیت سفارش')
+
+    def __str__(self):
+        return self.order_state_title
+
+    class Meta:
+        verbose_name = 'وضعیت سفارش'
+        verbose_name_plural = 'انواع وضعیت سفارش'
+        db_table = 't_order_states'
+
 # =================================================================
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="orders", verbose_name="مشتری")
@@ -24,6 +37,7 @@ class Order(models.Model):
     discount = models.IntegerField(blank=True, null=True, default=0, verbose_name='تخفیف روی سفارش')
     description = models.TextField(blank=True, null=True, verbose_name="توضیحات")
     peyment_type = models.ForeignKey(PeymentType, blank=True, null=True, default=None, on_delete=models.CASCADE, related_name='peyment_types', verbose_name="نوع پرداخت")
+    order_state = models.ForeignKey(OrderState, null=True, blank=True, on_delete=models.CASCADE, related_name='order', verbose_name="وضعیت سفارش")
 
     def get_order_total_price(self):
         sum = 0

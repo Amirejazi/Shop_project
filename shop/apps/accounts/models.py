@@ -71,7 +71,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 # ====================================================================================================
 class Customer(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, primary_key=True, related_name='customer_mode')
     phon_number = models.CharField(max_length=11, null=True, blank=True)
     address = models.TextField(blank=True, null=True, verbose_name='آدرس')
     file_upload = FileUpload('images', 'customers')
@@ -84,3 +84,20 @@ class Customer(models.Model):
     class Meta:
         verbose_name = 'مشتری'
         verbose_name_plural = 'مشتریان'
+
+
+class Message(models.Model):
+    full_name = models.CharField(max_length=40, verbose_name='نام')
+    email = models.EmailField(max_length=80, verbose_name='ایمیل')
+    subject = models.CharField(max_length=100, verbose_name='عنوان')
+    message = models.TextField(verbose_name='پیام')
+    is_seen = models.BooleanField(default=False, verbose_name='وضعیت مشاهده توسط مدیر')
+    register_date = models.DateField(default=timezone.now, verbose_name='تاریخ ثبت پیام')
+
+    def __str__(self):
+        return self.full_name + ' ' + self.subject
+
+    class Meta:
+        verbose_name = 'پیام'
+        verbose_name_plural = 'پیام ها'
+        db_table = 't_messages'

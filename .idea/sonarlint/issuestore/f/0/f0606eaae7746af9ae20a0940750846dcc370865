@@ -1,5 +1,6 @@
 
 upython:S1192+"XDefine a constant instead of duplicating this literal 'شماره موبایل' 3 times.(�膤�����
 mpython:S1192,"PDefine a constant instead of duplicating this literal 'رمز عبور' 3 times.(���������
-�python:S1192+"oDefine a constant instead of duplicating this literal 'شماره موبایل را وارد کنید' 3 times.(�膤�����8�����0
+�python:S1192+"oDefine a constant instead of duplicating this literal 'شماره موبایل را وارد کنید' 4 times.(�膤�����
+�python:S1192="uDefine a constant instead of duplicating this literal 'این فیلد نمی تواند خالی باشد!' 5 times.(���������
 �python:S1192"|Define a constant instead of duplicating this literal 'رمز عبور با تکرار آن مغایرت دارد!' 3 times.(楼������
